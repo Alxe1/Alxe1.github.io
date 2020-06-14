@@ -1,0 +1,421 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.3 Data Sinks · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="chapter2_2.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+            
+                <a href="chapter1.html">
+            
+                    
+                    第一章 Apache Flink简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="chapter1_1.html">
+            
+                <a href="chapter1_1.html">
+            
+                    
+                    1.1 Flink介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter1_2.html">
+            
+                <a href="chapter1_2.html">
+            
+                    
+                    1.2 Flink编程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter1_3.html">
+            
+                <a href="chapter1_3.html">
+            
+                    
+                    1.3 Flink基本架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    第二章 DataStream
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="chapter2_1.html">
+            
+                <a href="chapter2_1.html">
+            
+                    
+                    2.1 一个例子
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="chapter2_2.html">
+            
+                <a href="chapter2_2.html">
+            
+                    
+                    2.2 Data Sources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.3" data-path="chapter2_3.html">
+            
+                <a href="chapter2_3.html">
+            
+                    
+                    2.3 Data Sinks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.3 Data Sinks</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="23-data-sinks">2.3 Data Sinks</h2>
+<p>&#x7531;&#x4E8E;transform&#x64CD;&#x4F5C;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x653E;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x5C06;&#xFF0C;&#x8FD9;&#x8282;&#x8BB2;&#x4E00;&#x4E0B;Data Sink&#x3002;Sink&#x5C31;&#x662F;&#x628A;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5230;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002;Flink&#x6709;&#x5F88;&#x591A;&#x5185;&#x7F6E;&#x7684;sink&#xFF0C;&#x4F8B;&#x5982;<code>writeAsText</code>&#xFF0C;<code>writeAsCsv</code>, <code>print</code>&#x7B49;&#x7B49;&#xFF0C;&#x5F53;&#x7136;&#x8FD8;&#x6709;&#x81EA;&#x5B9A;&#x4E49;&#x7684;sink&#x65B9;&#x6CD5;&#x4EE5;&#x53CA;&#x7B2C;&#x4E09;&#x65B9;sink&#x3002;</p>
+<p>&#x5148;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.udfsink
+
+<span class="hljs-keyword">import</span> org.apache.flink.core.fs.<span class="hljs-type">FileSystem</span>.<span class="hljs-type">WriteMode</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">UDFSink</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+
+    <span class="hljs-keyword">val</span> res = text.flatMap(_.toLowerCase.split(<span class="hljs-string">&quot; &quot;</span>)).filter(_.nonEmpty)
+      .map((_, <span class="hljs-number">1</span>))
+      .keyBy(<span class="hljs-number">0</span>)
+      .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+      .sum(<span class="hljs-number">1</span>)
+      .map(r =&gt; {r._1 +<span class="hljs-string">&quot;,&quot;</span>+ <span class="hljs-type">String</span>.valueOf(r._2)})
+
+    res.writeAsText(<span class="hljs-string">&quot;file:///my-flink-learning/src/main/resources/udf_sink.txt&quot;</span>,
+      <span class="hljs-type">WriteMode</span>.<span class="hljs-type">OVERWRITE</span>)
+
+    env.execute(<span class="hljs-string">&quot;WriteToText&quot;</span>)
+  }
+}
+</code></pre>
+<p>&#x5F00;&#x542F;socket&#xFF0C;&#x8F93;&#x5165;&#x4E00;&#x4E9B;&#x5355;&#x8BCD;&#xFF0C;&#x7ECF;&#x8FC7;&#x7A0B;&#x5E8F;&#x5904;&#x7406;&#x540E;&#x5C31;&#x4F1A;&#x4FDD;&#x5B58;&#x5230;&#x4F60;&#x8BBE;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x4E3B;&#x8981;&#x8BF4;&#x4E00;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;sink&#xFF0C;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.udfsink
+
+<span class="hljs-keyword">import</span> org.apache.flink.configuration.<span class="hljs-type">Configuration</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.sink.{<span class="hljs-type">RichSinkFunction</span>, <span class="hljs-type">SinkFunction</span>}
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">UDFSink</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+
+    <span class="hljs-keyword">val</span> res = text.flatMap(_.toLowerCase.split(<span class="hljs-string">&quot; &quot;</span>)).filter(_.nonEmpty)
+      .map((_, <span class="hljs-number">1</span>))
+      .keyBy(<span class="hljs-number">0</span>)
+      .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+      .sum(<span class="hljs-number">1</span>)
+
+    res.addSink(<span class="hljs-keyword">new</span> <span class="hljs-type">MyRichSink</span>)
+    env.execute(<span class="hljs-string">&quot;MyRichSink&quot;</span>)
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MySink</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SinkFunction</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>)]</span>{
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">invoke</span></span>(value: (<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>), context: <span class="hljs-type">SinkFunction</span>.<span class="hljs-type">Context</span>[_]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> v = value._1 + <span class="hljs-string">&quot;,&quot;</span> + <span class="hljs-type">String</span>.valueOf(value._2)
+    println(v)
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRichSink</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">RichSinkFunction</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>)]</span>{
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">invoke</span></span>(value: (<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>), context: <span class="hljs-type">SinkFunction</span>.<span class="hljs-type">Context</span>[_]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> v = value._1 + <span class="hljs-string">&quot;,&quot;</span> + <span class="hljs-type">String</span>.valueOf(value._2)
+    println(v)
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open</span></span>(parameters: <span class="hljs-type">Configuration</span>): <span class="hljs-type">Unit</span> = {
+    println(<span class="hljs-string">&quot;open...&quot;</span>)
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close</span></span>(): <span class="hljs-type">Unit</span> = {
+    println(<span class="hljs-string">&quot;close...&quot;</span>)
+  }
+}
+</code></pre>
+<p>&#x81EA;&#x5B9A;&#x4E49;sink&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>SinkFunction</code>&#x63A5;&#x53E3;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>RichSinkFunction</code>&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x662F;<code>RichSinkFunction</code>&#xFF0C;&#x56E0;&#x4E3A;<code>RichSinkFunction</code>&#x6709;<code>open</code>&#x548C;<code>close</code>&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x5176;&#x4E2D;<code>invoke</code>&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x5904;&#x7406;&#x6570;&#x636E;&#x7684;&#x903B;&#x8F91;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chapter2_2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 2.2 Data Sources">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"previous":{"title":"2.2 Data Sources","level":"1.3.2","depth":2,"path":"chapters/chapter2_2.md","ref":"chapters/chapter2_2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_3.md","mtime":"2020-06-14T10:20:42.620Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-14T10:45:59.997Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
