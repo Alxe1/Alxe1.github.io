@@ -263,6 +263,7 @@
                                 
                                 <h2 id="23-data-sinks">2.3 Data Sinks</h2>
 <p>&#x7531;&#x4E8E;transform&#x64CD;&#x4F5C;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x653E;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x5C06;&#xFF0C;&#x8FD9;&#x8282;&#x8BB2;&#x4E00;&#x4E0B;Data Sink&#x3002;Sink&#x5C31;&#x662F;&#x628A;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5230;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002;Flink&#x6709;&#x5F88;&#x591A;&#x5185;&#x7F6E;&#x7684;sink&#xFF0C;&#x4F8B;&#x5982;<code>writeAsText</code>&#xFF0C;<code>writeAsCsv</code>, <code>print</code>&#x7B49;&#x7B49;&#xFF0C;&#x5F53;&#x7136;&#x8FD8;&#x6709;&#x81EA;&#x5B9A;&#x4E49;&#x7684;sink&#x65B9;&#x6CD5;&#x4EE5;&#x53CA;&#x7B2C;&#x4E09;&#x65B9;sink&#x3002;</p>
+<h3 id="231-&#x5185;&#x7F6E;sink">2.3.1 &#x5185;&#x7F6E;sink</h3>
 <p>&#x5148;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
 <pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.udfsink
 
@@ -292,6 +293,7 @@
 }
 </code></pre>
 <p>&#x5F00;&#x542F;socket&#xFF0C;&#x8F93;&#x5165;&#x4E00;&#x4E9B;&#x5355;&#x8BCD;&#xFF0C;&#x7ECF;&#x8FC7;&#x7A0B;&#x5E8F;&#x5904;&#x7406;&#x540E;&#x5C31;&#x4F1A;&#x4FDD;&#x5B58;&#x5230;&#x4F60;&#x8BBE;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<h3 id="232-&#x81EA;&#x5B9A;&#x4E49;sink">2.3.2 &#x81EA;&#x5B9A;&#x4E49;sink</h3>
 <p>&#x73B0;&#x5728;&#x4E3B;&#x8981;&#x8BF4;&#x4E00;&#x4E0B;&#x81EA;&#x5B9A;&#x4E49;sink&#xFF0C;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
 <pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.udfsink
 
@@ -343,6 +345,156 @@
 }
 </code></pre>
 <p>&#x81EA;&#x5B9A;&#x4E49;sink&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>SinkFunction</code>&#x63A5;&#x53E3;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>RichSinkFunction</code>&#x62BD;&#x8C61;&#x7C7B;&#xFF0C;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x662F;<code>RichSinkFunction</code>&#xFF0C;&#x56E0;&#x4E3A;<code>RichSinkFunction</code>&#x6709;<code>open</code>&#x548C;<code>close</code>&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x5176;&#x4E2D;<code>invoke</code>&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x5904;&#x7406;&#x6570;&#x636E;&#x7684;&#x903B;&#x8F91;&#x3002;</p>
+<h3 id="233-streamingfilesink">2.3.3 StreamingFileSink</h3>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x4E0A;&#x9762;&#x5185;&#x7F6E;&#x7684;sink&#x4F8B;&#x5982;<code>writeAsText</code>&#xFF0C;<code>writeAsCsv</code>&#x5DF2;&#x7ECF;&#x8FC7;&#x65F6;&#x4E86;&#xFF0C;&#x5B98;&#x65B9;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;<code>StreamingFileSink</code>&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x770B;&#x4E00;&#x4E0B;<code>StreamingFileSink</code>&#x662F;&#x4EC0;&#x4E48;&#x4E1C;&#x897F;&#x3002;</p>
+<p>&#x5B98;&#x7F51;&#x4E0A;&#x8BF4;<code>StreamingFileSink</code>&#x662F;&#x628A;&#x6587;&#x4EF6;&#x6309;&#x7167;&#x5206;&#x6876;&#x7684;&#x5F62;&#x5F0F;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x5B83;&#x548C;checkpoint&#x673A;&#x5236;&#x7684;&#x96C6;&#x6210;&#x80FD;&#x591F;&#x63D0;&#x4F9B;exactly once&#x7684;&#x8BED;&#x4E49;&#x3002;&#x90A3;&#x4E48;&#x5B83;&#x662F;&#x600E;&#x4E48;&#x5206;&#x6876;&#x7684;&#xFF1F;&#x4F60;&#x9996;&#x5148;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x57FA;&#x8DEF;&#x5F84;&#xFF0C;&#x57FA;&#x8DEF;&#x5F84;&#x5185;&#x5305;&#x542B;&#x4E86;&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x6876;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x6BCF;&#x4E2A;&#x5206;&#x6876;&#x5185;&#x5305;&#x542B;&#x4E00;&#x90E8;&#x5206;&#x4F60;&#x8981;&#x63D2;&#x5165;&#x7684;&#x6587;&#x4EF6;&#x6570;&#x636E;&#x3002;&#x4F46;&#x662F;&#x4F60;&#x8981;&#x600E;&#x4E48;&#x63A7;&#x5236;&#x5206;&#x6876;&#x5462;&#xFF0C;&#x5B83;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;<code>BuketAssigner</code>&#x63A5;&#x53E3;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x65F6;&#x95F4;&#x6216;&#x8005;&#x5143;&#x7D20;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6765;&#x5B9A;&#x4E49;&#x5206;&#x6876;&#x8DEF;&#x5F84;&#xFF0C;&#x5F53;&#x7136;&#x5B83;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684;&#x5B9E;&#x73B0;<code>BuketAssigner</code>&#x7684;&#x7C7B;&#x5C31;&#x662F;<code>DateTimeBucketAssigner</code>&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4F60;&#x5982;&#x679C;&#x4E0D;&#x5B9E;&#x73B0;<code>BuketAssigner</code>&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x7A0B;&#x5E8F;&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;<code>DateTimeBucketAssigner</code>&#x6765;&#x6BCF;&#x5C0F;&#x65F6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6876;&#x3002;<code>StreamingFileSink</code>&#x652F;&#x6301;&#x6309;&#x884C;(row-wise)&#x548C;&#x5206;&#x5757;(bulk)&#x7F16;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x4E24;&#x4E2A;builder&#x6A21;&#x5F0F;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0B;&#x9762;&#x5206;&#x522B;&#x8BB2;&#x89E3;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p><strong>&#x884C;&#x7F16;&#x7801;&#x683C;&#x5F0F;</strong></p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.udfsink
+
+<span class="hljs-keyword">import</span> java.io.<span class="hljs-type">IOException</span>
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.serialization.<span class="hljs-type">SimpleStringEncoder</span>
+<span class="hljs-keyword">import</span> org.apache.flink.core.fs.<span class="hljs-type">Path</span>
+<span class="hljs-keyword">import</span> org.apache.flink.core.io.<span class="hljs-type">SimpleVersionedSerializer</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.sink.filesystem.{<span class="hljs-type">BucketAssigner</span>, <span class="hljs-type">StreamingFileSink</span>}
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-keyword">import</span> scala.util.<span class="hljs-type">Random</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyForRowFormatSink</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.enableCheckpointing(<span class="hljs-number">1000</span>)
+
+    <span class="hljs-keyword">val</span> outputPath = <span class="hljs-string">&quot;/Users/littlely/projects/outputs&quot;</span>
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+
+    <span class="hljs-keyword">val</span> res = text.flatMap(_.toLowerCase.split(<span class="hljs-string">&quot; &quot;</span>)).filter(_.nonEmpty)
+      .map((_, <span class="hljs-number">1</span>))
+      .keyBy(<span class="hljs-number">0</span>)
+      .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+      .sum(<span class="hljs-number">1</span>)
+      .map(p =&gt; p._1 + <span class="hljs-string">&quot;,&quot;</span> + p._2.toString)
+
+    <span class="hljs-keyword">val</span> mySink = <span class="hljs-type">StreamingFileSink</span>.forRowFormat(<span class="hljs-keyword">new</span> <span class="hljs-type">Path</span>(outputPath), <span class="hljs-keyword">new</span> <span class="hljs-type">SimpleStringEncoder</span>[<span class="hljs-type">String</span>](<span class="hljs-string">&quot;utf-8&quot;</span>))
+      .withBucketAssigner(<span class="hljs-keyword">new</span> <span class="hljs-type">MyAssigner</span>)
+      .build()
+    <span class="hljs-comment">// &#x9ED8;&#x8BA4;1min&#x51FA;&#x6570;&#x636E;&#xFF1A;bucketCheckInterval (default = 1 min) : Millisecond interval for checking time based rolling policies</span>
+    res.addSink(mySink)
+
+    env.execute(<span class="hljs-string">&quot;StreamingFileSink&quot;</span>)
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAssigner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BucketAssigner</span>[<span class="hljs-type">String</span>, <span class="hljs-type">String</span>]</span>{
+  <span class="hljs-keyword">val</span> random = <span class="hljs-keyword">new</span> <span class="hljs-type">Random</span>(<span class="hljs-number">123</span>)
+  <span class="hljs-keyword">val</span> list = <span class="hljs-type">List</span>(<span class="hljs-string">&quot;aaaaa&quot;</span>, <span class="hljs-string">&quot;bbbbb&quot;</span>)
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getBucketId</span></span>(element: <span class="hljs-type">String</span>, context: <span class="hljs-type">BucketAssigner</span>.<span class="hljs-type">Context</span>): <span class="hljs-type">String</span> = {
+    <span class="hljs-keyword">val</span> selected = list(random.nextInt(<span class="hljs-number">2</span>))
+    selected
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getSerializer</span></span>: <span class="hljs-type">SimpleVersionedSerializer</span>[<span class="hljs-type">String</span>] = {
+    <span class="hljs-keyword">new</span> <span class="hljs-type">MySerializer</span>
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MySerializer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SimpleVersionedSerializer</span>[<span class="hljs-type">String</span>]</span>{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">val</span> _version: <span class="hljs-type">Int</span> = <span class="hljs-number">123</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getVersion</span></span>: <span class="hljs-type">Int</span> = _version
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize</span></span>(obj: <span class="hljs-type">String</span>): <span class="hljs-type">Array</span>[<span class="hljs-type">Byte</span>] = {
+    obj.getBytes(<span class="hljs-string">&quot;utf-8&quot;</span>)
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">deserialize</span></span>(version: <span class="hljs-type">Int</span>, serialized: <span class="hljs-type">Array</span>[<span class="hljs-type">Byte</span>]): <span class="hljs-type">String</span> = {
+    <span class="hljs-keyword">if</span> (version != _version) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-type">IOException</span>(<span class="hljs-string">&quot;The version is not match!&quot;</span>)
+    serialized.toString
+  }
+}
+</code></pre>
+<p>&#x548C;&#x524D;&#x9762;&#x4E00;&#x6837;&#xFF0C;&#x5148;&#x4ECE;socket&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x4E2D;&#x95F4;&#x4E00;&#x4E9B;&#x53D8;&#x6362;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x7ED3;&#x679C;sink&#x5230;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x7684;sink&#x5C31;&#x662F;<code>StreamingFileSink</code>&#xFF0C;&#x5176;&#x4E2D;<code>forRowFormat</code>&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x63D0;&#x4F9B;&#x57FA;&#x8DEF;&#x5F84;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x63D0;&#x4F9B;Encoder&#xFF0C;&#x65E2;&#x63A7;&#x5236;&#x5143;&#x7D20;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x3002;&#x63A7;&#x5236;&#x5206;&#x6876;&#x65F6;&#x5C31;&#x8981;&#x5B9E;&#x73B0;<code>BucketWriter[IN, BucketID]</code>&#xFF0C;&#x5176;&#x4E2D;<code>IN</code>&#x5C31;&#x662F;&#x5143;&#x7D20;&#x7684;&#x7C7B;&#x578B;&#xFF0C;<code>BucketID</code>&#x5C31;&#x662F;&#x5206;&#x6876;&#x540D;&#x79F0;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x65B9;&#x6CD5;<code>getBucketId</code>&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x5FC5;&#x987B;&#x6709;&#x6B63;&#x786E;&#x7684;<code>hashCode</code>&#x548C;<code>equals</code>&#x65B9;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x5173;&#x7CFB;&#x5230;&#x53D1;&#x9001;&#x6570;&#x636E;&#x7684;&#x8DEF;&#x5F84;&#x662F;&#x5426;&#x6B63;&#x786E;&#x3002;</p>
+<p>&#x5B9E;&#x73B0;<code>BucketWriter</code>&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;<code>getBucketId</code>&#xFF0C;&#x5C31;&#x662F;&#x8981;&#x83B7;&#x53D6;&#x8F93;&#x5165;&#x5143;&#x7D20;&#x6240;&#x8981;&#x5206;&#x54EA;&#x4E2A;&#x6876;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E0A;&#x9762;&#x5B9E;&#x73B0;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x5728;<code>aaaaa</code>&#x548C;<code>bbbbb</code>&#x4E2D;&#x968F;&#x673A;&#x9009;&#x4E00;&#x4E2A;&#xFF0C;&#x5E76;&#x628A;&#x5143;&#x7D20;&#x653E;&#x5230;&#x8BE5;&#x8DEF;&#x5F84;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x4E2D;&#xFF1B;&#x53E6;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;<code>getSerializer</code>&#xFF0C;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x8981;&#x5E8F;&#x5217;&#x5316;&#x6216;&#x53CD;&#x5E8F;&#x5217;&#x5316;<code>getBucketId</code>&#x6240;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;&#x5BF9;<code>BucketID</code>&#x8FDB;&#x884C;&#x5E8F;&#x5217;&#x5316;&#x548C;&#x53CD;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x662F;<code>SimpleVersionedSerializer</code>&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x8981;&#x786E;&#x5B9A;&#x597D;&#x5176;&#x4E2D;&#x7684;&#x7248;&#x672C;&#x4FE1;&#x606F;&#x3002;</p>
+<p><strong>&#x5757;&#x7F16;&#x7801;&#x65B9;&#x5F0F;</strong></p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.udfsink
+
+<span class="hljs-keyword">import</span> java.nio.charset.{<span class="hljs-type">Charset</span>, <span class="hljs-type">StandardCharsets</span>}
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.serialization.<span class="hljs-type">BulkWriter</span>
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.core.fs.{<span class="hljs-type">FSDataOutputStream</span>, <span class="hljs-type">Path</span>}
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.sink.filesystem.<span class="hljs-type">StreamingFileSink</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+<span class="hljs-keyword">import</span> org.apache.flink.util.<span class="hljs-type">Preconditions</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">MyForBulkFormatSink</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.enableCheckpointing(<span class="hljs-number">1000</span>)
+
+    <span class="hljs-keyword">val</span> outputPath = <span class="hljs-string">&quot;/Users/littlely/projects/outputs&quot;</span>
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+
+    <span class="hljs-keyword">val</span> res = text.flatMap(_.toLowerCase.split(<span class="hljs-string">&quot; &quot;</span>)).filter(_.nonEmpty)
+      .map((_, <span class="hljs-number">1</span>))
+      .keyBy(<span class="hljs-number">0</span>)
+      .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+      .sum(<span class="hljs-number">1</span>)
+      .map(p =&gt; p._1 + <span class="hljs-string">&quot;,&quot;</span> + p._2.toString)
+
+    <span class="hljs-keyword">val</span> sink = <span class="hljs-type">StreamingFileSink</span>.forBulkFormat(<span class="hljs-keyword">new</span> <span class="hljs-type">Path</span>(outputPath), <span class="hljs-keyword">new</span> <span class="hljs-type">MyBulkWriter</span>)
+      .withBucketAssigner(<span class="hljs-keyword">new</span> <span class="hljs-type">MyAssigner</span>)
+      .build()
+    res.addSink(sink)
+
+    env.execute(<span class="hljs-string">&quot;MyForBulkFormatSink&quot;</span>)
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyBulkFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BulkWriter</span>[<span class="hljs-type">String</span>]</span>{
+  <span class="hljs-keyword">var</span> stream: <span class="hljs-type">FSDataOutputStream</span> = _
+  <span class="hljs-keyword">val</span> charset: <span class="hljs-type">Charset</span> = <span class="hljs-type">StandardCharsets</span>.<span class="hljs-type">UTF_8</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">this</span></span>(inputStream: <span class="hljs-type">FSDataOutputStream</span>){
+    <span class="hljs-keyword">this</span>()
+    stream = <span class="hljs-type">Preconditions</span>.checkNotNull(inputStream)
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">addElement</span></span>(element: <span class="hljs-type">String</span>): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">this</span>.stream.write(element.getBytes(charset))
+    <span class="hljs-keyword">this</span>.stream.write(&apos;\n&apos;)
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">flush</span></span>(): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">this</span>.stream.flush()
+  }
+
+  <span class="hljs-comment">/**
+   * This method MUST NOT close the stream that the writer writes to.
+   * Closing the stream is expected to happen through the invoker of this method afterwards.
+   */</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">finish</span></span>(): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">this</span>.flush()
+    <span class="hljs-comment">// this.stream.close()  // WRONG</span>
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyBulkWriter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BulkWriter</span>.<span class="hljs-title">Factory</span>[<span class="hljs-type">String</span>]</span>{
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">create</span></span>(out: <span class="hljs-type">FSDataOutputStream</span>): <span class="hljs-type">BulkWriter</span>[<span class="hljs-type">String</span>] = {
+    <span class="hljs-keyword">val</span> bulkWriter = <span class="hljs-keyword">new</span> <span class="hljs-type">MyBulkFactory</span>(out)
+    bulkWriter
+  }
+}
+</code></pre>
+<p><code>forBulkFormat</code>&#x7684;&#x8F93;&#x5165;&#x4E5F;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4ECD;&#x7136;&#x662F;&#x57FA;&#x8DEF;&#x5F84;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;<code>BulkWriter.Factory</code>&#x7C7B;&#x578B;&#x7684;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x91CC;&#x5B9E;&#x73B0;<code>BulkWriter</code>&#x7684;&#x4E09;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x4E2D;<code>addElement</code>&#x662F;&#x5BF9;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#xFF0C;<code>flush</code>&#x5C31;&#x662F;&#x5237;&#x65B0;&#x4E2D;&#x95F4;&#x7684;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x5230;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;<code>finish</code>&#x662F;&#x7ED3;&#x675F;&#x6570;&#x636E;&#x7684;&#x5199;&#x5165;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x8FD9;&#x91CC;&#x4E0D;&#x8981;&#x5173;&#x95ED;&#x6D41;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x9519;&#x3002;&#x6700;&#x540E;&#x5B9E;&#x73B0;<code>BulkWriter.Factory&lt;T&gt;</code>&#x7684;<code>create</code>&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;<code>BulkWriter</code>&#x6765;&#x5BF9;&#x6D41;&#x8FDB;&#x884C;&#x5199;&#x5165;&#xFF0C;&#x5176;&#x4E2D;<code>T</code>&#x662F;&#x5199;&#x5165;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;&#x3002;</p>
 
                                 
                                 </section>
@@ -382,7 +534,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"previous":{"title":"2.2 Data Sources","level":"1.3.2","depth":2,"path":"chapters/chapter2_2.md","ref":"chapters/chapter2_2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_3.md","mtime":"2020-06-14T10:20:42.620Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-14T10:45:59.997Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"previous":{"title":"2.2 Data Sources","level":"1.3.2","depth":2,"path":"chapters/chapter2_2.md","ref":"chapters/chapter2_2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_3.md","mtime":"2020-06-20T06:41:29.382Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-20T06:41:59.302Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
