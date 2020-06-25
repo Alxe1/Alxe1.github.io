@@ -1,0 +1,658 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.4 Data Transformation · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="chapter2_3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+            
+                <a href="chapter1.html">
+            
+                    
+                    第一章 Apache Flink简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="chapter1_1.html">
+            
+                <a href="chapter1_1.html">
+            
+                    
+                    1.1 Flink介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter1_2.html">
+            
+                <a href="chapter1_2.html">
+            
+                    
+                    1.2 Flink编程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter1_3.html">
+            
+                <a href="chapter1_3.html">
+            
+                    
+                    1.3 Flink基本架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    第二章 DataStream
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="chapter2_1.html">
+            
+                <a href="chapter2_1.html#2_1">
+            
+                    
+                    2.1 一个例子
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="chapter2_2.html">
+            
+                <a href="chapter2_2.html">
+            
+                    
+                    2.2 Data Sources
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="chapter2_3.html">
+            
+                <a href="chapter2_3.html">
+            
+                    
+                    2.3 Data Sinks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="chapter2_4.html">
+            
+                <a href="chapter2_4.html">
+            
+                    
+                    2.4 Data Transformation
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.4 Data Transformation</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="24-data-transformation">2.4 Data Transformation</h2>
+<h3 id="241-&#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#x8DEF;&#x7EBF;&#x56FE;">2.4.1 &#x8F6C;&#x6362;&#x64CD;&#x4F5C;&#x8DEF;&#x7EBF;&#x56FE;</h3>
+<p>Flink&#x9664;&#x4E86;data source&#x548C;data sink&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x64CD;&#x4F5C;&#x5C31;&#x662F;data transformation&#xFF0C;&#x5B83;&#x662F;flink&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF0C;&#x4E00;&#x7C7B;&#x662F;&#x952E;&#x63A7;&#x72B6;&#x6001;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x53E6;&#x4E00;&#x7C7B;&#x662F;&#x975E;&#x952E;&#x63A7;&#x72B6;&#x6001;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<pre><code class="lang-scala">stream
+        .keyBy(...)                &lt;- &#x952E;&#x63A7;&#x72B6;&#x6001;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x533A;&#x522B;&#x4E8E;&#x975E;&#x952E;&#x63A7;&#x72B6;&#x6001;
+        .window(...)            &lt;- &#x7A97;&#x53E3;&#x5904;&#x7406;
+        [.trigger(...)]        &lt;- &#x89E6;&#x53D1;&#x673A;&#x5236;&#x7684;&#x5904;&#x7406;
+        [.evictor(...)]        &lt;- &#x6D41;&#x6570;&#x636E;&#x7684;&#x524D;&#x671F;&#x5904;&#x7406;
+        [.allowedLateness(...)]        &lt;- &#x5BF9;&#x8FDF;&#x5230;&#x6570;&#x636E;&#x7684;&#x5904;&#x7406;
+        [.sideOutputLateData(...)]        &lt;- &#x8FDF;&#x5230;&#x6570;&#x636E;&#x7684;&#x4FA7;&#x8F93;&#x51FA;&#x5904;&#x7406;
+        .reduce/aggregate/fold/apply(...)        &lt;- &#x6570;&#x636E;&#x805A;&#x5408;&#x64CD;&#x4F5C;&#x5904;&#x7406;
+        [.getSideOutput(...)]        &lt;- &#x6570;&#x636E;&#x7684;&#x4FA7;&#x8F93;&#x51FA;&#x5904;&#x7406;
+</code></pre>
+<pre><code class="lang-scala">stream
+        .windowAll(...)            &lt;- &#x7A97;&#x53E3;&#x5904;&#x7406;
+        [.trigger(...)]        &lt;- &#x89E6;&#x53D1;&#x673A;&#x5236;&#x7684;&#x5904;&#x7406;
+        [.evictor(...)]        &lt;- &#x6D41;&#x6570;&#x636E;&#x7684;&#x524D;&#x671F;&#x5904;&#x7406;
+        [.allowedLateness(...)]        &lt;- &#x5BF9;&#x8FDF;&#x5230;&#x6570;&#x636E;&#x7684;&#x5904;&#x7406;
+        [.sideOutputLateData(...)]        &lt;- &#x8FDF;&#x5230;&#x6570;&#x636E;&#x7684;&#x4FA7;&#x8F93;&#x51FA;&#x5904;&#x7406;
+        .reduce/aggregate/fold/apply(...)        &lt;- &#x6570;&#x636E;&#x805A;&#x5408;&#x64CD;&#x4F5C;&#x5904;&#x7406;
+        [.getSideOutput(...)]        &lt;- &#x6570;&#x636E;&#x7684;&#x4FA7;&#x8F93;&#x51FA;&#x5904;&#x7406;
+</code></pre>
+<p>&#x5176;&#x4E2D;&#xFF0C;[]&#x62EC;&#x53F7;&#x5185;&#x90FD;&#x662F;&#x53EF;&#x9009;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x4ECE;&#x5FC5;&#x9009;&#x7684;&#x64CD;&#x4F5C;&#x8BB2;&#x8D77;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8BB2;&#x53EF;&#x9009;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="242-keyby&#x64CD;&#x4F5C;">2.4.2 keyBy&#x64CD;&#x4F5C;</h3>
+<p><code>keyBy</code>&#x64CD;&#x4F5C;&#x5C31;&#x662F;&#x6309;&#x952E;&#x5206;&#x7EC4;&#xFF0C;&#x6839;&#x636E;&#x5206;&#x7EC4;&#x540E;&#x7684;&#x952E;&#xFF0C;&#x76F8;&#x540C;&#x7684;&#x952E;&#x4F1A;&#x88AB;&#x5206;&#x914D;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x91CD;&#xFF0C;&#x8FD9;&#x6837;&#x7A0B;&#x5E8F;&#x80FD;&#x591F;&#x5206;&#x6210;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x5E76;&#x884C;&#x8FDB;&#x884C;&#x7A97;&#x53E3;&#x8BA1;&#x7B97;&#xFF0C;&#x800C;&#x975E;&#x952E;&#x63A7;&#x72B6;&#x6001;&#x7684;&#x6D41;&#x6570;&#x636E;&#x5C31;&#x65E0;&#x6CD5;&#x53D1;&#x6325;&#x8FD9;&#x79CD;&#x4F18;&#x52BF;&#x3002;&#x4F8B;&#x5982;2.1 &#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#x5C55;&#x793A;&#x7684;&#x90A3;&#x6837;&#xFF0C;&#x901A;&#x8FC7;&#x4E8C;&#x5143;&#x7EC4;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4F5C;&#x4E3A;key&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x540E;&#x7EED;&#x7684;&#x5904;&#x7406;&#x3002;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;case class&#x6216;POJO&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p><strong>&#x4F7F;&#x7528;case class</strong></p>
+<p>&#x4F7F;&#x7528;case class&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5B57;&#x6BB5;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#x805A;&#x5408;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.keybyops
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+
+<span class="hljs-keyword">case</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name:<span class="hljs-type">String</span>, salary: <span class="hljs-type">Float</span></span>)</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">KeyByOps</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(elem =&gt; elem.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(x =&gt; <span class="hljs-type">Person</span>(x(<span class="hljs-number">0</span>), x(<span class="hljs-number">1</span>).toFloat))
+        .keyBy(<span class="hljs-string">&quot;name&quot;</span>)
+        .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+        .sum(<span class="hljs-string">&quot;salary&quot;</span>)
+        .print()
+
+    env.execute()
+  }
+}
+</code></pre>
+<h3 id="243-timestamps-&#x548C;watermarks">2.4.3 Timestamps &#x548C;watermarks</h3>
+<p>&#x5728;&#x524D;&#x9762;&#x7684;1.2.4&#x8282;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x4E86;flink&#x652F;&#x6301;&#x7684;&#x4E09;&#x79CD;&#x65F6;&#x95F4;&#x8BED;&#x4E49;&#xFF0C;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x662F;event time&#x548C;processing time&#x8BED;&#x4E49;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)</code>&#x6216;&#x8005;<code>env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime)</code>&#x6765;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x8BED;&#x4E49;&#x3002;&#x90A3;&#x4EC0;&#x4E48;&#x662F;watermark&#x5462;&#xFF1F;watermark&#x901A;&#x4FD7;&#x5730;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x5728;&#x6570;&#x636E;&#x6EDE;&#x540E;&#x7684;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#xFF0C;&#x4ECD;&#x7136;&#x628A;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x7684;&#x6570;&#x636E;&#x653E;&#x5165;&#x524D;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x4E4B;&#x4E2D;&#x6765;&#x8BA1;&#x7B97;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#xFF0C;&#x5B83;&#x4E3A;&#x5904;&#x7406;&#x6570;&#x636E;&#x7684;&#x6EDE;&#x540E;&#x800C;&#x63D0;&#x51FA;&#x7684;&#x3002;&#x4F8B;&#x5982;&#x73B0;&#x5728;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x4E3A;10:00:00-10:10:00&#xFF0C;&#x6309;&#x9053;&#x7406;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;&#x65F6;&#x95F4;&#x4E3A;10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x5E94;&#x8BE5;&#x5C31;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x8BBE;&#x7F6E;&#x4E86;&#x6EDE;&#x540E;&#x65F6;&#x95F4;&#x4E3A;5s&#xFF0C;&#x8FD9;&#x65F6;&#x53EA;&#x6709;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;&#x65F6;&#x95F4;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;10:10:05&#x7684;&#x65F6;&#x5019;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x516C;&#x5F0F;&#x6765;&#x786E;&#x5B9A;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x6267;&#x884C;&#x7A97;&#x53E3;&#xFF1A;</p>
+<div align="center"><font color="red"><strong>max(event_time) - max_lag_time &gt;= window.end</strong></font></div>
+
+<p>&#x5176;&#x4E2D;max(event_time)&#x5C31;&#x662F;&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x6700;&#x5927;&#x7684;&#x90A3;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#xFF0C;window.end&#x5C31;&#x662F;&#x7A97;&#x53E3;&#x7684;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x65F6;&#x95F4;&#x4ECD;&#x7136;&#x4E3A;10:00:00-10:10:00&#xFF0C;&#x65E2;window.end=10:10:00&#xFF0C;max_lag_time&#x4E3A;5s&#xFF0C;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;10:10:00&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x662F;&#x6700;&#x5927;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6839;&#x636E;&#x516C;&#x5F0F;10:10:00 - 5s = 10:09:55 &lt; 10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x5F53;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;10:10:05&#x65F6;&#xFF0C;&#x6839;&#x636E;&#x516C;&#x5F0F;10:10:05 - 5s = 10:10:00 &gt;= 10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x7A97;&#x53E3;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x8FD0;&#x7B97;(<strong>&#x5B98;&#x7F51;&#x4E0A;&#x8BF4;&#x4E86;&#xFF0C;timestamp&#x548C;watermark&#x90FD;&#x8981;&#x4EE5;&#x6BEB;&#x79D2;&#x8868;&#x793A;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x5904;&#x7406;&#x7684;</strong>)&#x3002;</p>
+<p>&#x4EE3;&#x7801;&#x4E2D;&#x662F;&#x4F7F;&#x7528;<code>assignTimestampsAndWatermarks</code>&#x65B9;&#x6CD5;&#x6765;&#x6307;&#x5B9A;watermark&#x7684;&#xFF0C;flink&#x5C06;watermark&#x6839;&#x636E;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#x5206;&#x6210;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x4E00;&#x79CD;&#x662F;periodica watermark&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;punctuated watermark&#x3002;periodica watermark&#x662F;&#x6839;&#x636E;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5468;&#x671F;&#x6027;&#x7684;&#x751F;&#x6210;watermark&#xFF0C;&#x800C;punctuated watermark&#x662F;&#x6839;&#x636E;&#x63A5;&#x5165;&#x6570;&#x636E;&#x7684;&#x6570;&#x91CF;&#x751F;&#x6210;watermark&#xFF0C;&#x4F8B;&#x5982;&#x6570;&#x636E;&#x6D41;&#x4E2D;&#x7279;&#x5B9A;&#x5143;&#x7D20;&#x7684;&#x6570;&#x91CF;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x6761;&#x4EF6;&#x540E;&#x751F;&#x6210;watermark&#x3002;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8BB2;periodica watermark&#xFF0C;flink&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x4E86;&#x4E24;&#x79CD;periodica watermark&#x65B9;&#x5F0F;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5347;&#x5E8F;&#x6A21;&#x5F0F;&#xFF0C;&#x65E2;&#x8BA4;&#x4E3A;&#x65F6;&#x95F4;&#x4E00;&#x76F4;&#x662F;&#x589E;&#x5927;&#x7684;&#xFF0C;&#x6CA1;&#x6709;&#x6EDE;&#x540E;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x4E71;&#x5E8F;&#x6A21;&#x5F0F;&#xFF0C;&#x65E2;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x80FD;&#x591F;&#x5BB9;&#x5FCD;&#x591A;&#x957F;&#x7684;&#x6570;&#x636E;&#x6EDE;&#x540E;&#x65F6;&#x95F4;&#x3002;</p>
+<h4 id="1-&#x5347;&#x5E8F;&#x6A21;&#x5F0F;">(1) &#x5347;&#x5E8F;&#x6A21;&#x5F0F;</h4>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.watermarkops
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-comment">/**
+ * &#x6570;&#x636E;&#xFF1A;
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,10,1593050402000
+ * flink,20,1593050402000
+ * spark,40,1593050405000
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">AscendingWatermarkTest</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)  <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#x8BED;&#x4E49;</span>
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p=&gt;<span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignAscendingTimestamps(_._3)  <span class="hljs-comment">// &#x5347;&#x5E8F;&#x6A21;&#x5F0F;</span>
+      .keyBy(<span class="hljs-number">0</span>)
+      .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+      .sum(<span class="hljs-number">1</span>)
+      .print()
+
+    env.execute()
+  }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre>
+(spark,50,1593050400000)
+(flink,30,1593050402000)
+(spark,140,1593050405000)
+(flink,200,1593050407000)
+</pre>
+
+<p><strong>&#x6CE8;&#x610F;&#x5728;&#x8F93;&#x5165;&#x6700;&#x540E;&#x4E00;&#x6761;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x5B83;&#x5E76;&#x6CA1;&#x6709;&#x8BA1;&#x7B97;&#x8FDB;&#x53BB;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x7A97;&#x53E3;&#x65F6;&#x95F4;&#x533A;&#x95F4;&#x662F;&#x5DE6;&#x95ED;&#x53F3;&#x5F00;&#x7684;&#x3002;</strong></p>
+<h4 id="2-&#x4E71;&#x5E8F;&#x6A21;&#x5F0F;">(2) &#x4E71;&#x5E8F;&#x6A21;&#x5F0F;</h4>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.watermarkops
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.timestamps.<span class="hljs-type">BoundedOutOfOrdernessTimestampExtractor</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-comment">/**
+ * &#x6570;&#x636E;&#xFF1A;
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,10,1593050402000
+ * flink,20,1593050402000
+ *
+ * spark,40,1593050405000
+ * spark,100,1593050406000
+ * spark,10,1593050403000
+ * flink,200,1593050407000
+ *
+ * flink,300,1593050410000
+ * hadoop,20,1593050411000
+ * hadoop,20,1593050412000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">UnorderedWatermarkTest</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p=&gt;<span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignTimestampsAndWatermarks(<span class="hljs-keyword">new</span> <span class="hljs-type">MyWatermarkAssigner</span>)  <span class="hljs-comment">// &#x4E71;&#x5E8F;&#x6A21;&#x5F0F;</span>
+      .keyBy(<span class="hljs-number">0</span>)
+      .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+      .sum(<span class="hljs-number">1</span>)
+      .print()
+
+    env.execute()
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyWatermarkAssigner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BoundedOutOfOrdernessTimestampExtractor</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)](<span class="hljs-params"><span class="hljs-type">Time</span>.seconds(2</span>))</span>{
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">extractTimestamp</span></span>(element: (<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)): <span class="hljs-type">Long</span> = {
+    element._3
+  }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre>
+(spark,60,1593050400000)
+(flink,30,1593050402000)
+(spark,140,1593050405000)
+(flink,200,1593050407000)
+(flink,300,1593050410000)
+(hadoop,40,1593050411000)
+</pre>
+
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x6700;&#x540E;&#x4E24;&#x884C;&#x7ED3;&#x679C;&#x662F;&#x5728;&#x9000;&#x51FA;&#x7A0B;&#x5E8F;&#x65F6;&#x624D;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x540C;&#x5B66;&#x4EEC;&#x6700;&#x597D;&#x628A;&#x6570;&#x636E;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x53D8;&#x5316;&#x3002;</p>
+<h4 id="3-&#x81EA;&#x5B9A;&#x4E49;timestamp-assigner">(3) &#x81EA;&#x5B9A;&#x4E49;timestamp assigner</h4>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x7684;timestamp assigner&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;<code>AssignerWithPeriodicWatermarks&lt;T&gt;</code>&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.watermarkops
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.functions.<span class="hljs-type">AssignerWithPeriodicWatermarks</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.watermark.<span class="hljs-type">Watermark</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-comment">/**
+ * &#x6570;&#x636E;&#xFF1A;
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,10,1593050402000
+ * flink,20,1593050402000
+ * spark,40,1593050405000
+ * spark,100,1593050406000
+ * spark,10,1593050403000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ * hadoop,20,1593050411000
+ * hadoop,20,1593050412000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">UserDefinedTimestampExtractor</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p=&gt;<span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignTimestampsAndWatermarks(<span class="hljs-keyword">new</span> <span class="hljs-type">MyTimestampExtractor</span>(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">2</span>)))
+      .keyBy(<span class="hljs-number">0</span>)
+      .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
+      .sum(<span class="hljs-number">1</span>)
+      .print()
+
+    env.execute()
+  }
+}
+
+<span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;timestamp extractor</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyTimestampExtractor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AssignerWithPeriodicWatermarks</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)] </span>{
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> lastWatermark = <span class="hljs-number">0</span>L
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> maxTimestamp = <span class="hljs-number">0</span>L
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">var</span> time: <span class="hljs-type">Long</span> = _
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">this</span></span>(time: <span class="hljs-type">Time</span>){
+    <span class="hljs-keyword">this</span>()
+    <span class="hljs-keyword">this</span>.time = maxTimestamp + time.toMilliseconds  <span class="hljs-comment">// time&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x9700;&#x8981;&#x8FD9;&#x6837;&#x8F6C;&#x5316;&#x4E00;&#x4E0B;</span>
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getCurrentWatermark</span></span>: <span class="hljs-type">Watermark</span> = {
+    <span class="hljs-keyword">val</span> marks = maxTimestamp - time
+    <span class="hljs-keyword">if</span> (marks &gt;= lastWatermark){
+      lastWatermark = marks
+    }
+
+    <span class="hljs-keyword">new</span> <span class="hljs-type">Watermark</span>(lastWatermark)
+  }
+
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">extractTimestamp</span></span>(element: (<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>), previousElementTimestamp: <span class="hljs-type">Long</span>): <span class="hljs-type">Long</span> = {
+    <span class="hljs-keyword">val</span> currentTimestamp = element._3
+    <span class="hljs-keyword">if</span> (currentTimestamp &gt; maxTimestamp){
+      <span class="hljs-keyword">this</span>.maxTimestamp = currentTimestamp
+    }
+    currentTimestamp
+  }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre>
+(spark,60,1593050400000)
+(flink,30,1593050402000)
+(flink,200,1593050407000)
+(spark,140,1593050405000)
+(hadoop,40,1593050411000)
+(flink,300,1593050410000)
+</pre>
+
+<p>&#x6BD4;&#x8F83;(2)&#x548C;(3)&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;(2)&#x7684;&#x5B9E;&#x73B0;&#x548C;(3)&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#x5728;&#x5B9E;&#x73B0;&#x7684;&#x65F6;&#x5019;&#x4E3B;&#x8981;&#x4F7F;&#x7528;<code>getCurrentWatermark</code>&#x548C;<code>extractTimestamp</code>&#x65B9;&#x6CD5;&#xFF0C;<code>extractTimestamp</code>&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x6570;&#x636E;&#x7684;timestamp&#xFF0C;&#x5E76;&#x4E0E;&#x6700;&#x5927;&#x7684;timestamp&#x76F8;&#x6BD4;&#x8F83;&#xFF0C;&#x4ECE;&#x800C;&#x83B7;&#x5F97;&#x516C;&#x5F0F;&#x4E2D;&#x7684;max(event_time)&#x5E76;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x7684;timestamp&#xFF0C;&#x7136;&#x540E;&#x5728;<code>getCurrentWatermark</code>&#x8BA1;&#x7B97;&#x65B0;&#x7684;watermark&#xFF0C;&#x5E76;&#x4E0E;&#x524D;&#x4E00;&#x4E2A;watermark&#x76F8;&#x6BD4;&#x8F83;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;watermark&#x3002;</p>
+<h3 id="244-window&#x64CD;&#x4F5C;">2.4.4 window&#x64CD;&#x4F5C;</h3>
+<p>Window&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x8BF4;&#x662F;flink&#x4E2D;&#x6700;&#x5E38;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x4E86;&#xFF0C;&#x5B83;&#x4F7F;&#x5F97;&#x65E0;&#x754C;&#x7684;&#x6570;&#x636E;&#x6D41;&#x53D8;&#x6210;&#x6709;&#x754C;&#x7684;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x6570;&#x636E;&#x63A5;&#x53D7;&#x7684;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x8FDB;&#x800C;&#x5904;&#x7406;&#x8BE5;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x591A;&#x4E2A;window&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x6838;&#x8FDB;&#x884C;&#x5E76;&#x884C;&#x5904;&#x7406;&#x3002;&#x7A97;&#x53E3;&#x7684;&#x5904;&#x7406;&#x603B;&#x5171;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x5206;&#x522B;&#x662F;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x7A97;&#x53E3;&#x548C;&#x57FA;&#x4E8E;&#x6570;&#x91CF;&#x7684;&#x7A97;&#x53E3;&#xFF0C;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x7A97;&#x53E3;&#x53C8;&#x6709;&#x56DB;&#x79CD;&#xFF0C;&#x5206;&#x522B;&#x662F;Tumbling window(&#x6EDA;&#x52A8;&#x7A97;&#x53E3;)&#xFF0C;Sliding window(&#x6ED1;&#x52A8;&#x7A97;&#x53E3;)&#xFF0C;Session window(&#x4F1A;&#x8BDD;&#x7A97;&#x53E3;)&#x548C;Global window(&#x5168;&#x5C40;&#x7A97;&#x53E3;)&#xFF0C;&#x57FA;&#x4E8E;&#x4F7F;&#x7528;&#x7684;&#x9891;&#x7387;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x8BF4;&#x660E;Tumbling window&#x548C;Sliding window&#x3002;</p>
+<p>&#x5728;&#x7A97;&#x53E3;&#x8BA1;&#x7B97;&#x65F6;&#xFF0C;&#x53C8;&#x4F1A;&#x6839;&#x636E;&#x4E0A;&#x6E38;&#x6570;&#x636E;&#x662F;&#x5426;&#x6309;key&#x8FDB;&#x884C;&#x5206;&#x533A;&#x53C8;&#x5206;&#x4E3A;keyed window&#x548C;non-keyed window&#x3002;&#x5982;&#x679C;&#x662F;keyed window&#xFF0C;&#x6570;&#x636E;&#x4F1A;&#x6839;&#x636E;key&#x5728;&#x4E0D;&#x540C;&#x7684;task&#x4E2D;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x4E5F;&#x662F;&#x5BF9;&#x6BCF;&#x4E2A;key&#x8BA1;&#x7B97;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x662F;non-keyed window&#xFF0C;&#x7A97;&#x53E3;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x4F1A;&#x5728;&#x4E00;&#x4E2A;task&#x4E2D;&#x8FD0;&#x884C;&#x5F97;&#x5230;&#x5168;&#x5C40;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4F7F;&#x7528;keyed window&#x3002;</p>
+<h4 id="1-window-assigner">(1) window assigner</h4>
+<p>Window assigner&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x628A;&#x6570;&#x636E;&#x5206;&#x914D;&#x5230;&#x7A97;&#x53E3;&#x4E4B;&#x4E2D;&#x3002;flink&#x6709;&#x5185;&#x7F6E;&#x7684;window assigner&#x64CD;&#x4F5C;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6269;&#x5C55;<code>WindowAssigner</code>&#x7C7B;&#x6765;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;window assigner&#x3002;window assigner&#x53EF;&#x4EE5;&#x64CD;&#x4F5C;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x548C;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x5148;&#x8BF4;&#x4E00;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;&#x7A97;&#x53E3;&#xFF0C;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x548C;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#xFF0C;&#x5728;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#x4E4B;&#x95F4;&#x7684;&#x8FD9;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x4F8B;&#x5982;&#x65F6;&#x95F4;10:00:00 - 10:10:00&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;10min&#x7684;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;10min&#x5C31;&#x662F;&#x7A97;&#x53E3;&#x7684;&#x5927;&#x5C0F;(window size)&#xFF1B;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x5C31;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#xFF0C;&#x6BD4;&#x5982;10min&#xFF0C;&#x7A97;&#x53E3;&#x5728;&#x79FB;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x91CD;&#x53E0;&#xFF0C;&#x4F8B;&#x5982;10:00:00 - 10:10:00&#x662F;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x4E3A;10:10:00-10:20:00&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E24;&#x4E2A;&#x7A97;&#x53E3;&#x4E4B;&#x95F4;&#x7684;&#x65F6;&#x95F4;&#x4E0D;&#x91CD;&#x53E0;(&#x7A97;&#x53E3;&#x662F;&#x5DE6;&#x95ED;&#x53F3;&#x5F00;&#x7684;&#x533A;&#x95F4;)&#xFF1B;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#xFF0C;&#x4E0D;&#x8FC7;&#x5728;&#x79FB;&#x52A8;&#x7A97;&#x53E3;&#x7684;&#x65F6;&#x5019;&#x6709;&#x91CD;&#x53E0;&#xFF0C;&#x4F8B;&#x5982;10:00:00 - 10:10:00&#x662F;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;10:05:00-10:15:00&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E24;&#x4E2A;&#x7A97;&#x53E3;&#x6709;&#x660E;&#x663E;&#x7684;&#x65F6;&#x95F4;&#x91CD;&#x53E0;&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x5C31;&#x662F;&#x5927;&#x5C0F;&#x4E3A;10min&#xFF0C;&#x6B65;&#x957F;(slide)&#x4E3A;5min&#x7684;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x3002;</p>
+<p>&#x5185;&#x7F6E;&#x7684;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x51FD;&#x6570;&#x548C;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x51FD;&#x6570;&#x5206;&#x522B;&#x662F;<code>TumblingEventTimeWindow</code>(&#x5904;&#x7406;event time&#x7684;&#xFF0C;<code>TumblingProcessingTimeWindow</code>&#x4E3A;&#x5904;&#x7406;processing time&#x7684;)&#x548C;<code>SlidingEventTimeWindow</code>(&#x5904;&#x7406;event time&#x7684;&#xFF0C;<code>SlidingProcessingTimeWindow</code>&#x4E3A;&#x5904;&#x7406;processing time&#x7684;)&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x5206;&#x522B;&#x770B;&#x5B83;&#x4EEC;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p><strong>Tumbling window</strong></p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.windowops
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.<span class="hljs-type">TumblingEventTimeWindows</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-comment">/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,10,1593050402000
+ * flink,20,1593050402000
+ * spark,40,1593050405000
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">TumblingWindows</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p=&gt;<span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(<span class="hljs-number">0</span>)
+      .window(<span class="hljs-type">TumblingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>)))
+      .sum(<span class="hljs-number">1</span>)
+      .print()
+
+    env.execute()
+  }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre>
+(spark,50,1593050400000)
+(flink,30,1593050402000)
+(spark,140,1593050405000)
+(flink,200,1593050407000)
+(flink,300,1593050410000)
+</pre>
+
+<p><strong>&#x5F85;&#x7EED;</strong></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chapter2_3.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 2.3 Data Sinks">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.4 Data Transformation","level":"1.3.4","depth":2,"previous":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"path":"chapters/chapter2_3.md","ref":"chapters/chapter2_3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4.md","mtime":"2020-06-25T10:57:03.179Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-25T10:57:28.874Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
