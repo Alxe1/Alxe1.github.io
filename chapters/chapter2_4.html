@@ -313,7 +313,7 @@
 <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">KeyByOps</span> </span>{
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
     <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
-    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setParallelism(<span class="hljs-number">1</span>)  <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x64CD;&#x4F5C;&#x7684;&#x5E76;&#x884C;&#x5EA6;</span>
 
     <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
     text.map(elem =&gt; elem.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
@@ -440,7 +440,7 @@
 (hadoop,40,1593050411000)
 </pre>
 
-<p>&#x6CE8;&#x610F;&#xFF0C;&#x6700;&#x540E;&#x4E24;&#x884C;&#x7ED3;&#x679C;&#x662F;&#x5728;&#x9000;&#x51FA;&#x7A0B;&#x5E8F;&#x65F6;&#x624D;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x540C;&#x5B66;&#x4EEC;&#x6700;&#x597D;&#x628A;&#x6570;&#x636E;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x53D8;&#x5316;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x6700;&#x540E;&#x4E24;&#x884C;&#x7ED3;&#x679C;&#x662F;&#x5728;&#x9000;&#x51FA;socket&#x65F6;&#x624D;&#x6253;&#x5370;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x540C;&#x5B66;&#x4EEC;&#x6700;&#x597D;&#x628A;&#x6570;&#x636E;&#x4E00;&#x884C;&#x4E00;&#x884C;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x53D8;&#x5316;&#x3002;</p>
 <h4 id="3-&#x81EA;&#x5B9A;&#x4E49;timestamp-assigner">(3) &#x81EA;&#x5B9A;&#x4E49;timestamp assigner</h4>
 <p>&#x81EA;&#x5B9A;&#x4E49;&#x7684;timestamp assigner&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;<code>AssignerWithPeriodicWatermarks&lt;T&gt;</code>&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
 <pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.watermarkops
@@ -562,7 +562,7 @@
       .map(p=&gt;<span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
       .assignAscendingTimestamps(_._3)
       .keyBy(<span class="hljs-number">0</span>)
-      .window(<span class="hljs-type">TumblingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>)))
+      .window(<span class="hljs-type">TumblingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>)))  <span class="hljs-comment">// &#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x4E3A;5s</span>
       .sum(<span class="hljs-number">1</span>)
       .print()
 
@@ -578,8 +578,66 @@
 (flink,200,1593050407000)
 (flink,300,1593050410000)
 </pre>
+&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x4F7F;&#x7528;`TumblingEventTimeWindows`&#x65F6;&#x9700;&#x8981;&#x6307;&#x5B9A;event time&#x65F6;&#x95F4;&#x8BED;&#x4E49;&#x4EE5;&#x53CA;&#x8BBE;&#x5B9A;watermark&#x3002;
 
-<p><strong>&#x5F85;&#x7EED;</strong></p>
+**Sliding window**
+
+```scala
+package com.littlely.windowops
+
+import org.apache.flink.api.scala._
+import org.apache.flink.streaming.api.TimeCharacteristic
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
+import org.apache.flink.streaming.api.windowing.assigners.{SlidingEventTimeWindows, TumblingEventTimeWindows}
+import org.apache.flink.streaming.api.windowing.time.Time
+
+/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */
+object SlidingWindows {
+  def main(args: Array[String]): Unit = {
+    val env = StreamExecutionEnvironment.getExecutionEnvironment
+    env.setParallelism(1)
+    env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
+
+    val text = env.socketTextStream(&quot;localhost&quot;, 9999)
+    text.map(_.toLowerCase.split(&quot;,&quot;)).filter(_.nonEmpty)
+      .map(p =&gt; Tuple3[String, Int, Long](p(0), p(1).toInt, p(2).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(0)
+      .window(SlidingEventTimeWindows.of(Time.seconds(10), Time.seconds(5)))  // &#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x4E3A;10s&#xFF0C;&#x6B65;&#x957F;5s
+      .sum(1)
+      .print()
+
+    env.execute()
+  }
+}
+```
+
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+
+<pre>
+(spark,50,1593050400000)
+(flink,20,1593050404000)
+(spark,190,1593050400000)
+(flink,220,1593050404000)
+(flink,500,1593050407000)
+(spark,140,1593050405000)
+</pre>
+
+<p>&#x53EF;&#x4EE5;&#x4E00;&#x6761;&#x4E00;&#x6761;&#x5730;&#x8F93;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;&#x662F;&#x600E;&#x4E48;&#x53D8;&#x5316;&#x7684;&#x3002;</p>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;window assigner</strong></p>
+<p>&#x4E00;&#x822C;&#x524D;&#x4E24;&#x79CD;window assigner&#x5C31;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5728;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x81EA;&#x5DF1;&#x9700;&#x8981;&#x7684;&#x7A97;&#x53E3;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x548C;&#x5B83;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x6709;&#x4E9B;&#x5DEE;&#x522B;&#xFF0C;&#x8FD9;&#x4E9B;&#x5728;&#x8BB2;&#x89E3;trigger&#x7684;&#x65F6;&#x5019;&#x518D;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#x3002;</p>
+<h3 id="245-window&#x805A;&#x5408;&#x51FD;&#x6570;">2.4.5 window&#x805A;&#x5408;&#x51FD;&#x6570;</h3>
 
                                 
                                 </section>
@@ -619,7 +677,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.4 Data Transformation","level":"1.3.4","depth":2,"previous":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"path":"chapters/chapter2_3.md","ref":"chapters/chapter2_3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4.md","mtime":"2020-06-25T10:57:03.179Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-25T10:57:28.874Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.4 Data Transformation","level":"1.3.4","depth":2,"previous":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"path":"chapters/chapter2_3.md","ref":"chapters/chapter2_3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4.md","mtime":"2020-06-26T03:59:32.110Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-26T04:00:05.056Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
