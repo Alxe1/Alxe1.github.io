@@ -1,0 +1,556 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.4.4 window操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chapter2_4_5.html" />
+    
+    
+    <link rel="prev" href="chapter2_4_3.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+            
+                <a href="chapter1.html">
+            
+                    
+                    第一章 Apache Flink简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="chapter1_1.html">
+            
+                <a href="chapter1_1.html">
+            
+                    
+                    1.1 Flink介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter1_2.html">
+            
+                <a href="chapter1_2.html">
+            
+                    
+                    1.2 Flink编程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter1_3.html">
+            
+                <a href="chapter1_3.html">
+            
+                    
+                    1.3 Flink基本架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    第二章 DataStream
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="chapter2_1.html">
+            
+                <a href="chapter2_1.html#2_1">
+            
+                    
+                    2.1 一个例子
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter2_2.html">
+            
+                <a href="chapter2_2.html">
+            
+                    
+                    2.2 Data Sources
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="chapter2_3.html">
+            
+                <a href="chapter2_3.html">
+            
+                    
+                    2.3 Data Sinks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="chapter2_4.html">
+            
+                <a href="chapter2_4.html">
+            
+                    
+                    2.4 Data Transformation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="chapter2_4_1.html">
+            
+                <a href="chapter2_4_1.html">
+            
+                    
+                    2.4.1转换操作路线图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="chapter2_4_2.html">
+            
+                <a href="chapter2_4_2.html">
+            
+                    
+                    2.4.2 keyBy操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="chapter2_4_3.html">
+            
+                <a href="chapter2_4_3.html">
+            
+                    
+                    2.4.3 Timestamps 和watermarks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2.4" data-path="chapter2_4_4.html">
+            
+                <a href="chapter2_4_4.html">
+            
+                    
+                    2.4.4 window操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="chapter2_4_5.html">
+            
+                <a href="chapter2_4_5.html">
+            
+                    
+                    2.4.5 window聚合函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="chapter2_4_6.html">
+            
+                <a href="chapter2_4_6.html">
+            
+                    
+                    2.4.6 Triggers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.4.4 window操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="244-window&#x64CD;&#x4F5C;">2.4.4 window&#x64CD;&#x4F5C;</h3>
+<p>Window&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x8BF4;&#x662F;flink&#x4E2D;&#x6700;&#x5E38;&#x7528;&#x7684;&#x64CD;&#x4F5C;&#x4E86;&#xFF0C;&#x5B83;&#x4F7F;&#x5F97;&#x65E0;&#x754C;&#x7684;&#x6570;&#x636E;&#x6D41;&#x53D8;&#x6210;&#x6709;&#x754C;&#x7684;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x63A7;&#x5236;&#x6570;&#x636E;&#x63A5;&#x53D7;&#x7684;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x8FDB;&#x800C;&#x5904;&#x7406;&#x8BE5;&#x65F6;&#x95F4;&#x8303;&#x56F4;&#x5185;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x591A;&#x4E2A;window&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x591A;&#x6838;&#x8FDB;&#x884C;&#x5E76;&#x884C;&#x5904;&#x7406;&#x3002;&#x7A97;&#x53E3;&#x7684;&#x5904;&#x7406;&#x603B;&#x5171;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x5206;&#x522B;&#x662F;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x7A97;&#x53E3;&#x548C;&#x57FA;&#x4E8E;&#x6570;&#x91CF;&#x7684;&#x7A97;&#x53E3;&#xFF0C;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#x7684;&#x7A97;&#x53E3;&#x53C8;&#x6709;&#x56DB;&#x79CD;&#xFF0C;&#x5206;&#x522B;&#x662F;Tumbling window(&#x6EDA;&#x52A8;&#x7A97;&#x53E3;)&#xFF0C;Sliding window(&#x6ED1;&#x52A8;&#x7A97;&#x53E3;)&#xFF0C;Session window(&#x4F1A;&#x8BDD;&#x7A97;&#x53E3;)&#x548C;Global window(&#x5168;&#x5C40;&#x7A97;&#x53E3;)&#xFF0C;&#x57FA;&#x4E8E;&#x4F7F;&#x7528;&#x7684;&#x9891;&#x7387;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x8BF4;&#x660E;Tumbling window&#x548C;Sliding window&#x3002;</p>
+<p>&#x5728;&#x7A97;&#x53E3;&#x8BA1;&#x7B97;&#x65F6;&#xFF0C;&#x53C8;&#x4F1A;&#x6839;&#x636E;&#x4E0A;&#x6E38;&#x6570;&#x636E;&#x662F;&#x5426;&#x6309;key&#x8FDB;&#x884C;&#x5206;&#x533A;&#x53C8;&#x5206;&#x4E3A;keyed window&#x548C;non-keyed window&#x3002;&#x5982;&#x679C;&#x662F;keyed window&#xFF0C;&#x6570;&#x636E;&#x4F1A;&#x6839;&#x636E;key&#x5728;&#x4E0D;&#x540C;&#x7684;task&#x4E2D;&#x5E76;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x4E5F;&#x662F;&#x5BF9;&#x6BCF;&#x4E2A;key&#x8BA1;&#x7B97;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x5982;&#x679C;&#x662F;non-keyed window&#xFF0C;&#x7A97;&#x53E3;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x4F1A;&#x5728;&#x4E00;&#x4E2A;task&#x4E2D;&#x8FD0;&#x884C;&#x5F97;&#x5230;&#x5168;&#x5C40;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x4F7F;&#x7528;keyed window&#x3002;</p>
+<h4 id="1-window-assigner">(1) window assigner</h4>
+<p>Window assigner&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x628A;&#x6570;&#x636E;&#x5206;&#x914D;&#x5230;&#x7A97;&#x53E3;&#x4E4B;&#x4E2D;&#x3002;flink&#x6709;&#x5185;&#x7F6E;&#x7684;window assigner&#x64CD;&#x4F5C;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x65F6;&#x95F4;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6269;&#x5C55;<code>WindowAssigner</code>&#x7C7B;&#x6765;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;window assigner&#x3002;window assigner&#x53EF;&#x4EE5;&#x64CD;&#x4F5C;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x548C;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x5148;&#x8BF4;&#x4E00;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;&#x7A97;&#x53E3;&#xFF0C;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x548C;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#xFF0C;&#x5728;&#x5F00;&#x59CB;&#x65F6;&#x95F4;&#x548C;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#x4E4B;&#x95F4;&#x7684;&#x8FD9;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x4F8B;&#x5982;&#x65F6;&#x95F4;10:00:00 - 10:10:00&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;10min&#x7684;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;10min&#x5C31;&#x662F;&#x7A97;&#x53E3;&#x7684;&#x5927;&#x5C0F;(window size)&#xFF1B;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x5C31;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#xFF0C;&#x6BD4;&#x5982;10min&#xFF0C;&#x7A97;&#x53E3;&#x5728;&#x79FB;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x91CD;&#x53E0;&#xFF0C;&#x4F8B;&#x5982;10:00:00 - 10:10:00&#x662F;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x4E3A;10:10:00-10:20:00&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E24;&#x4E2A;&#x7A97;&#x53E3;&#x4E4B;&#x95F4;&#x7684;&#x65F6;&#x95F4;&#x4E0D;&#x91CD;&#x53E0;(&#x7A97;&#x53E3;&#x662F;&#x5DE6;&#x95ED;&#x53F3;&#x5F00;&#x7684;&#x533A;&#x95F4;)&#xFF1B;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x4E5F;&#x6709;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x7684;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#xFF0C;&#x4E0D;&#x8FC7;&#x5728;&#x79FB;&#x52A8;&#x7A97;&#x53E3;&#x7684;&#x65F6;&#x5019;&#x6709;&#x91CD;&#x53E0;&#xFF0C;&#x4F8B;&#x5982;10:00:00 - 10:10:00&#x662F;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;10:05:00-10:15:00&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E24;&#x4E2A;&#x7A97;&#x53E3;&#x6709;&#x660E;&#x663E;&#x7684;&#x65F6;&#x95F4;&#x91CD;&#x53E0;&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x5C31;&#x662F;&#x5927;&#x5C0F;&#x4E3A;10min&#xFF0C;&#x6B65;&#x957F;(slide)&#x4E3A;5min&#x7684;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x3002;</p>
+<p>&#x5185;&#x7F6E;&#x7684;&#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#x51FD;&#x6570;&#x548C;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#x51FD;&#x6570;&#x5206;&#x522B;&#x662F;<code>TumblingEventTimeWindow</code>(&#x5904;&#x7406;event time&#x7684;&#xFF0C;<code>TumblingProcessingTimeWindow</code>&#x4E3A;&#x5904;&#x7406;processing time&#x7684;)&#x548C;<code>SlidingEventTimeWindow</code>(&#x5904;&#x7406;event time&#x7684;&#xFF0C;<code>SlidingProcessingTimeWindow</code>&#x4E3A;&#x5904;&#x7406;processing time&#x7684;)&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x5206;&#x522B;&#x770B;&#x5B83;&#x4EEC;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p><strong>Tumbling window</strong></p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.windowops
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.<span class="hljs-type">TumblingEventTimeWindows</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-comment">/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,10,1593050402000
+ * flink,20,1593050402000
+ * spark,40,1593050405000
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">TumblingWindows</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p=&gt;<span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(<span class="hljs-number">0</span>)
+      .window(<span class="hljs-type">TumblingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>)))  <span class="hljs-comment">// &#x6EDA;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x4E3A;5s</span>
+      .sum(<span class="hljs-number">1</span>)
+      .print()
+
+    env.execute()
+  }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre>
+(spark,50,1593050400000)
+(flink,30,1593050402000)
+(spark,140,1593050405000)
+(flink,200,1593050407000)
+(flink,300,1593050410000)
+</pre>
+
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x4F7F;&#x7528;<code>TumblingEventTimeWindows</code>&#x65F6;&#x9700;&#x8981;&#x6307;&#x5B9A;event time&#x65F6;&#x95F4;&#x8BED;&#x4E49;&#x4EE5;&#x53CA;&#x8BBE;&#x5B9A;watermark&#x3002;</p>
+<p><strong>Sliding window</strong></p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.windowops
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.{<span class="hljs-type">SlidingEventTimeWindows</span>, <span class="hljs-type">TumblingEventTimeWindows</span>}
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-comment">/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">SlidingWindows</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p =&gt; <span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(<span class="hljs-number">0</span>)
+      .window(<span class="hljs-type">SlidingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">10</span>), <span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>)))  <span class="hljs-comment">// &#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x4E3A;10s&#xFF0C;&#x6B65;&#x957F;5s</span>
+      .sum(<span class="hljs-number">1</span>)
+      .print()
+
+    env.execute()
+  }
+}
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre>
+(spark,50,1593050400000)
+(flink,20,1593050404000)
+(spark,190,1593050400000)
+(flink,220,1593050404000)
+(flink,500,1593050407000)
+(spark,140,1593050405000)
+</pre>
+
+<p>&#x53EF;&#x4EE5;&#x4E00;&#x6761;&#x4E00;&#x6761;&#x5730;&#x8F93;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;&#x662F;&#x600E;&#x4E48;&#x53D8;&#x5316;&#x7684;&#x3002;</p>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;window assigner</strong></p>
+<p>&#x4E00;&#x822C;&#x524D;&#x4E24;&#x79CD;window assigner&#x5C31;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5728;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x81EA;&#x5DF1;&#x9700;&#x8981;&#x7684;&#x7A97;&#x53E3;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x548C;&#x5B83;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x6709;&#x4E9B;&#x5DEE;&#x522B;&#xFF0C;&#x8FD9;&#x4E9B;&#x5728;&#x8BB2;&#x89E3;trigger&#x7684;&#x65F6;&#x5019;&#x518D;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chapter2_4_3.html" class="navigation navigation-prev " aria-label="Previous page: 2.4.3 Timestamps 和watermarks">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="chapter2_4_5.html" class="navigation navigation-next " aria-label="Next page: 2.4.5 window聚合函数">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.4.4 window操作","level":"1.4.2.4","depth":3,"next":{"title":"2.4.5 window聚合函数","level":"1.4.2.5","depth":3,"path":"chapters/chapter2_4_5.md","ref":"chapters/chapter2_4_5.md","articles":[]},"previous":{"title":"2.4.3 Timestamps 和watermarks","level":"1.4.2.3","depth":3,"path":"chapters/chapter2_4_3.md","ref":"chapters/chapter2_4_3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4_4.md","mtime":"2020-07-05T08:30:58.189Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-05T08:35:40.635Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

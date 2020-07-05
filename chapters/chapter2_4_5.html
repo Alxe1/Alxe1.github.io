@@ -1,0 +1,617 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.4.5 window聚合函数 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chapter2_4_6.html" />
+    
+    
+    <link rel="prev" href="chapter2_4_4.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter1.html">
+            
+                <a href="chapter1.html">
+            
+                    
+                    第一章 Apache Flink简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="chapter1_1.html">
+            
+                <a href="chapter1_1.html">
+            
+                    
+                    1.1 Flink介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter1_2.html">
+            
+                <a href="chapter1_2.html">
+            
+                    
+                    1.2 Flink编程模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter1_3.html">
+            
+                <a href="chapter1_3.html">
+            
+                    
+                    1.3 Flink基本架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter2.html">
+            
+                <a href="chapter2.html">
+            
+                    
+                    第二章 DataStream
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="chapter2_1.html">
+            
+                <a href="chapter2_1.html#2_1">
+            
+                    
+                    2.1 一个例子
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chapter2_2.html">
+            
+                <a href="chapter2_2.html">
+            
+                    
+                    2.2 Data Sources
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="chapter2_3.html">
+            
+                <a href="chapter2_3.html">
+            
+                    
+                    2.3 Data Sinks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="chapter2_4.html">
+            
+                <a href="chapter2_4.html">
+            
+                    
+                    2.4 Data Transformation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="chapter2_4_1.html">
+            
+                <a href="chapter2_4_1.html">
+            
+                    
+                    2.4.1转换操作路线图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="chapter2_4_2.html">
+            
+                <a href="chapter2_4_2.html">
+            
+                    
+                    2.4.2 keyBy操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="chapter2_4_3.html">
+            
+                <a href="chapter2_4_3.html">
+            
+                    
+                    2.4.3 Timestamps 和watermarks
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="chapter2_4_4.html">
+            
+                <a href="chapter2_4_4.html">
+            
+                    
+                    2.4.4 window操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2.5" data-path="chapter2_4_5.html">
+            
+                <a href="chapter2_4_5.html">
+            
+                    
+                    2.4.5 window聚合函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="chapter2_4_6.html">
+            
+                <a href="chapter2_4_6.html">
+            
+                    
+                    2.4.6 Triggers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >2.4.5 window聚合函数</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="245-window&#x805A;&#x5408;&#x51FD;&#x6570;">2.4.5 window&#x805A;&#x5408;&#x51FD;&#x6570;</h3>
+<p>&#x5728;&#x7A97;&#x53E3;&#x901A;&#x8FC7;&#x9ED8;&#x8BA4;&#x7684;trigger(&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;trigger&#xFF0C;&#x540E;&#x9762;&#x8BB2;)&#x53D1;&#x5C04;&#x6570;&#x636E;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BF9;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x7A97;&#x53E3;&#x7684;&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x805A;&#x5408;&#x51FD;&#x6570;&#x6709;&#x591A;&#x79CD;&#xFF0C;&#x4F8B;&#x5982;ReduceFunction&#xFF0C;AggregateFunction&#xFF0C;FoldFunction&#xFF0C;ProcessWindowFunction&#x7B49;&#x3002;&#x5176;&#x4E2D;ReduceFunction&#x548C;AggregateFunction&#x6548;&#x7387;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x589E;&#x91CF;&#x805A;&#x5408;&#xFF0C;ProcessWindowFunction&#x6027;&#x80FD;&#x6BD4;&#x8F83;&#x4F4E;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8981;&#x8FED;&#x4EE3;&#x7A97;&#x53E3;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x4F18;&#x70B9;&#x5C31;&#x662F;&#x80FD;&#x591F;&#x5BF9;&#x7A97;&#x53E3;&#x8FDB;&#x884C;&#x989D;&#x5916;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<p><strong>ReduceFunction</strong></p>
+<p>&#x5148;&#x770B;&#x4E00;&#x4E0B;<code>reduce</code>&#x51FD;&#x6570;&#x7684;&#x7B7E;&#x540D;&#xFF1A;<code>def reduce(function: (T, T) =&gt; T): DataStream[T]</code>&#xFF0C;<code>reduce</code>&#x51FD;&#x6570;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8F93;&#x5165;&#x4E24;&#x4E2A;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8F93;&#x51FA;&#x4E5F;&#x662F;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.windowfuncs
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.<span class="hljs-type">TumblingEventTimeWindows</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+<span class="hljs-comment">/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ReduceFunc</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p =&gt; <span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(<span class="hljs-number">0</span>)
+      .window(<span class="hljs-type">TumblingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">10</span>)))
+      .reduce((v1, v2) =&gt; (v1._1, v1._2 + v2._2, v2._3))
+      .print()
+
+    env.execute()
+  }
+}
+</code></pre>
+<p><strong>AggregateFunction</strong></p>
+<p>AggregateFunction&#x662F;ReduceFunction&#x7684;&#x4E00;&#x4E2A;&#x6CDB;&#x5316;&#x7248;&#x672C;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x7740;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x65E2;&#x8F93;&#x5165;&#x7C7B;&#x578B;&#xFF0C;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x7C7B;&#x578B;&#x548C;&#x8F93;&#x51FA;&#x7C7B;&#x578B;&#xFF0C;&#x67E5;&#x770B;<code>aggregate</code>&#x7B7E;&#x540D;<code>def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation]</code>&#x770B;&#x5230;<code>ACC</code>&#x4E3A;&#x8F93;&#x5165;&#x7C7B;&#x578B;&#xFF0C;<code>V</code>&#x4E3A;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x7C7B;&#x578B;&#xFF0C;<code>R</code>&#x4E3A;&#x8F93;&#x51FA;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.windowfuncs
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.common.functions.<span class="hljs-type">AggregateFunction</span>
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.<span class="hljs-type">TumblingEventTimeWindows</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+
+
+<span class="hljs-comment">/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">AggregateFunc</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p =&gt; <span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(<span class="hljs-number">0</span>)
+      .window(<span class="hljs-type">TumblingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">10</span>)))
+      .aggregate(<span class="hljs-keyword">new</span> <span class="hljs-type">MyAggregateFunc</span>)
+      .print()
+
+    env.execute()
+  }
+}
+
+<span class="hljs-comment">// &#x6C42;&#x5E73;&#x5747;&#x503C;</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAggregateFunc</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AggregateFunction</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>), (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>), <span class="hljs-type">Double</span>]</span>{
+  <span class="hljs-comment">// &#x6784;&#x5EFA;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x503C;</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">createAccumulator</span></span>(): (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>) = {
+    (<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+  }
+
+  <span class="hljs-comment">// &#x8F93;&#x5165;&#x503C;&#x4E0E;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x503C;&#x76F8;&#x52A0;</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add</span></span>(value: (<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>), accumulator: (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>)): (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>) = {
+    (value._2 + accumulator._1, accumulator._2 + <span class="hljs-number">1</span>)
+  }
+
+  <span class="hljs-comment">// &#x83B7;&#x53D6;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getResult</span></span>(accumulator: (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>)): <span class="hljs-type">Double</span> = {
+    accumulator._1 / accumulator._2
+  }
+
+  <span class="hljs-comment">// &#x4E24;&#x4E2A;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x7684;&#x878D;&#x5408;</span>
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">merge</span></span>(a: (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>), b: (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>)): (<span class="hljs-type">Int</span>, <span class="hljs-type">Int</span>) = {
+    (a._1 + b._1, a._2 + b._2)
+  }
+}
+</code></pre>
+<p><strong>ProcessWindowFunction</strong></p>
+<p>ProcessWindowFunction&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5305;&#x542B;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4E0D;&#x4EC5;&#x5982;&#x6B64;&#xFF0C;&#x4ED6;&#x8FD8;&#x80FD;&#x901A;&#x8FC7;<code>Context</code>&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;watermark&#x4EE5;&#x53CA;&#x7A97;&#x53E3;&#x4FE1;&#x606F;&#x7B49;&#xFF0C;&#x53EF;&#x4EE5;&#x8BF4;&#x5B83;&#x662F;&#x6700;&#x7075;&#x6D3B;&#x7684;&#x7A97;&#x53E3;&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x8FC7;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#x5C31;&#x662F;&#x9700;&#x8981;&#x7F13;&#x5B58;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;OOM&#x3002;</p>
+<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.windowfuncs
+
+<span class="hljs-keyword">import</span> org.apache.flink.api.java.functions.<span class="hljs-type">KeySelector</span>
+<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.function.<span class="hljs-type">ProcessWindowFunction</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.<span class="hljs-type">TumblingEventTimeWindows</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.windows.<span class="hljs-type">TimeWindow</span>
+<span class="hljs-keyword">import</span> org.apache.flink.util.<span class="hljs-type">Collector</span>
+
+<span class="hljs-comment">/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ProcessFunc</span> </span>{
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+    env.setParallelism(<span class="hljs-number">1</span>)
+    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+
+    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
+    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
+      .map(p =&gt; <span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .assignAscendingTimestamps(_._3)
+      <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x6CE8;&#x610F;&#xFF0C;&#x56E0;&#x4E3A;process&#x53C2;&#x6570;key&#x662F;&#x7531;keyBy&#x51FD;&#x6570;&#x4E2D;&#x7684;KeySelector&#x9009;&#x53D6;&#x7684;&#xFF0C;</span>
+      <span class="hljs-comment">// &#x5982;&#x679C;&#x4F7F;&#x7528;tuple&#x7684;&#x4E0B;&#x6807;&#x9009;&#x53D6;&#x5143;&#x7D20;&#x8FDB;&#x884C;keyBy&#x65F6;&#x4E0D;&#x80FD;&#x8BC6;&#x522B;&#x7C7B;&#x578B;&#xFF0C;&#x4F1A;&#x7F16;&#x8BD1;&#x51FA;&#x9519;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x80FD;&#x7528;KeySelector</span>
+      .keyBy(<span class="hljs-keyword">new</span> <span class="hljs-type">KeySelector</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>), <span class="hljs-type">String</span>] {
+        <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">getKey</span></span>(value: (<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)): <span class="hljs-type">String</span> = value._1
+      })
+      .window(<span class="hljs-type">TumblingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">10</span>)))
+      .process(<span class="hljs-keyword">new</span> <span class="hljs-type">MyProcessFunction</span>)
+      .print()
+
+    env.execute()
+  }
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyProcessFunction</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ProcessWindowFunction</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>), (<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>), <span class="hljs-type">String</span>, <span class="hljs-type">TimeWindow</span>]</span>{
+  <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process</span></span>(key: <span class="hljs-type">String</span>, context: <span class="hljs-type">Context</span>, elements: <span class="hljs-type">Iterable</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)], out: <span class="hljs-type">Collector</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>)]): <span class="hljs-type">Unit</span> = {
+    <span class="hljs-keyword">var</span> count: <span class="hljs-type">Int</span> = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> (i &lt;- elements){
+      count = count + i._2
+    }
+    out.collect((key, count))
+  }
+}
+</code></pre>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x7A97;&#x53E3;&#x7684;&#x6240;&#x6709;&#x5FC5;&#x8981;&#x64CD;&#x4F5C;&#x90FD;&#x8BB2;&#x5B8C;&#x4E86;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x5F00;&#x59CB;&#x8BB2;&#x4E00;&#x4E9B;&#x53EF;&#x9009;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chapter2_4_4.html" class="navigation navigation-prev " aria-label="Previous page: 2.4.4 window操作">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="chapter2_4_6.html" class="navigation navigation-next " aria-label="Next page: 2.4.6 Triggers">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.4.5 window聚合函数","level":"1.4.2.5","depth":3,"next":{"title":"2.4.6 Triggers","level":"1.4.2.6","depth":3,"path":"chapters/chapter2_4_6.md","ref":"chapters/chapter2_4_6.md","articles":[]},"previous":{"title":"2.4.4 window操作","level":"1.4.2.4","depth":3,"path":"chapters/chapter2_4_4.md","ref":"chapters/chapter2_4_4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4_5.md","mtime":"2020-07-05T08:32:24.413Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-05T08:35:40.635Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
