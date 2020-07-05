@@ -331,7 +331,7 @@
 <p>&#x5728;&#x524D;&#x9762;&#x7684;1.2.4&#x8282;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x4E86;flink&#x652F;&#x6301;&#x7684;&#x4E09;&#x79CD;&#x65F6;&#x95F4;&#x8BED;&#x4E49;&#xFF0C;&#x4E3B;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x662F;event time&#x548C;processing time&#x8BED;&#x4E49;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)</code>&#x6216;&#x8005;<code>env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime)</code>&#x6765;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x8BED;&#x4E49;&#x3002;&#x90A3;&#x4EC0;&#x4E48;&#x662F;watermark&#x5462;&#xFF1F;watermark&#x901A;&#x4FD7;&#x5730;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x5728;&#x6570;&#x636E;&#x6EDE;&#x540E;&#x7684;&#x4E00;&#x5B9A;&#x65F6;&#x95F4;&#x5185;&#xFF0C;&#x4ECD;&#x7136;&#x628A;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x7684;&#x6570;&#x636E;&#x653E;&#x5165;&#x524D;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x4E4B;&#x4E2D;&#x6765;&#x8BA1;&#x7B97;&#x7684;&#x65F6;&#x95F4;&#x70B9;&#xFF0C;&#x5B83;&#x4E3A;&#x5904;&#x7406;&#x6570;&#x636E;&#x7684;&#x6EDE;&#x540E;&#x800C;&#x63D0;&#x51FA;&#x7684;&#x3002;&#x4F8B;&#x5982;&#x73B0;&#x5728;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x4E3A;10:00:00-10:10:00&#xFF0C;&#x6309;&#x9053;&#x7406;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;&#x65F6;&#x95F4;&#x4E3A;10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x5E94;&#x8BE5;&#x5C31;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x8BBE;&#x7F6E;&#x4E86;&#x6EDE;&#x540E;&#x65F6;&#x95F4;&#x4E3A;5s&#xFF0C;&#x8FD9;&#x65F6;&#x53EA;&#x6709;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;&#x65F6;&#x95F4;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;10:10:05&#x7684;&#x65F6;&#x5019;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x516C;&#x5F0F;&#x6765;&#x786E;&#x5B9A;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x6267;&#x884C;&#x7A97;&#x53E3;&#xFF1A;</p>
 <div align="center"><font color="red"><strong>max(event_time) - max_lag_time &gt;= window.end</strong></font></div>
 
-<p>&#x5176;&#x4E2D;max(event_time)&#x5C31;&#x662F;&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x6700;&#x5927;&#x7684;&#x90A3;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#xFF0C;window.end&#x5C31;&#x662F;&#x7A97;&#x53E3;&#x7684;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x65F6;&#x95F4;&#x4ECD;&#x7136;&#x4E3A;10:00:00-10:10:00&#xFF0C;&#x65E2;window.end=10:10:00&#xFF0C;max_lag_time&#x4E3A;5s&#xFF0C;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;10:10:00&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x662F;&#x6700;&#x5927;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6839;&#x636E;&#x516C;&#x5F0F;10:10:00 - 5s = 10:09:55 &lt; 10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x5F53;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;10:10:05&#x65F6;&#xFF0C;&#x6839;&#x636E;&#x516C;&#x5F0F;10:10:05 - 5s = 10:10:00 &gt;= 10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x7A97;&#x53E3;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x8FD0;&#x7B97;(<strong>&#x5B98;&#x7F51;&#x4E0A;&#x8BF4;&#x4E86;&#xFF0C;timestamp&#x548C;watermark&#x90FD;&#x8981;&#x4EE5;&#x6BEB;&#x79D2;&#x8868;&#x793A;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x5904;&#x7406;&#x7684;</strong>)&#x3002;</p>
+<p>&#x5176;&#x4E2D;max(event_time)&#x5C31;&#x662F;&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x6700;&#x5927;&#x7684;&#x90A3;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#xFF0C;window.end&#x5C31;&#x662F;&#x7A97;&#x53E3;&#x7684;&#x7ED3;&#x675F;&#x65F6;&#x95F4;&#xFF0C;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x7A97;&#x53E3;&#x65F6;&#x95F4;&#x4ECD;&#x7136;&#x4E3A;10:00:00-10:10:00&#xFF0C;&#x65E2;window.end=10:10:00&#xFF0C;max_lag_time&#x4E3A;5s&#xFF0C;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;10:10:00&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x65F6;&#x95F4;&#x5728;&#x7A97;&#x53E3;&#x4E2D;&#x662F;&#x6700;&#x5927;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6839;&#x636E;&#x516C;&#x5F0F;10:10:00 - 5s = 10:09:55 &lt; 10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x5F53;&#x6765;&#x4E86;&#x4E00;&#x6761;&#x6570;&#x636E;10:10:05&#x65F6;&#xFF0C;&#x6839;&#x636E;&#x516C;&#x5F0F;10:10:05 - 5s = 10:10:00 &gt;= 10:10:00&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x7A97;&#x53E3;&#x5C31;&#x4F1A;&#x6267;&#x884C;&#x8FD0;&#x7B97;(<strong>&#x5B98;&#x7F51;&#x4E0A;&#x8BF4;&#x4E86;&#xFF0C;timestamp&#x548C;watermark&#x90FD;&#x8981;&#x4EE5;&#x6BEB;&#x79D2;&#x8868;&#x793A;&#x7684;Long&#x7C7B;&#x578B;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x5904;&#x7406;&#x7684;</strong>)&#x3002;</p>
 <p>&#x4EE3;&#x7801;&#x4E2D;&#x662F;&#x4F7F;&#x7528;<code>assignTimestampsAndWatermarks</code>&#x65B9;&#x6CD5;&#x6765;&#x6307;&#x5B9A;watermark&#x7684;&#xFF0C;flink&#x5C06;watermark&#x6839;&#x636E;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#x5206;&#x6210;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x4E00;&#x79CD;&#x662F;periodica watermark&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;punctuated watermark&#x3002;periodica watermark&#x662F;&#x6839;&#x636E;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x5468;&#x671F;&#x6027;&#x7684;&#x751F;&#x6210;watermark&#xFF0C;&#x800C;punctuated watermark&#x662F;&#x6839;&#x636E;&#x63A5;&#x5165;&#x6570;&#x636E;&#x7684;&#x6570;&#x91CF;&#x751F;&#x6210;watermark&#xFF0C;&#x4F8B;&#x5982;&#x6570;&#x636E;&#x6D41;&#x4E2D;&#x7279;&#x5B9A;&#x5143;&#x7D20;&#x7684;&#x6570;&#x91CF;&#x8FBE;&#x5230;&#x4E00;&#x5B9A;&#x6761;&#x4EF6;&#x540E;&#x751F;&#x6210;watermark&#x3002;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8BB2;periodica watermark&#xFF0C;flink&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x4E86;&#x4E24;&#x79CD;periodica watermark&#x65B9;&#x5F0F;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x5347;&#x5E8F;&#x6A21;&#x5F0F;&#xFF0C;&#x65E2;&#x8BA4;&#x4E3A;&#x65F6;&#x95F4;&#x4E00;&#x76F4;&#x662F;&#x589E;&#x5927;&#x7684;&#xFF0C;&#x6CA1;&#x6709;&#x6EDE;&#x540E;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x4E71;&#x5E8F;&#x6A21;&#x5F0F;&#xFF0C;&#x65E2;&#x8BBE;&#x5B9A;&#x4E00;&#x4E2A;&#x80FD;&#x591F;&#x5BB9;&#x5FCD;&#x591A;&#x957F;&#x7684;&#x6570;&#x636E;&#x6EDE;&#x540E;&#x65F6;&#x95F4;&#x3002;</p>
 <h4 id="1-&#x5347;&#x5E8F;&#x6A21;&#x5F0F;">(1) &#x5347;&#x5E8F;&#x6A21;&#x5F0F;</h4>
 <pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.watermarkops
@@ -571,24 +571,27 @@
 }
 </code></pre>
 <p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
-<p><pre>
+<pre>
 (spark,50,1593050400000)
 (flink,30,1593050402000)
 (spark,140,1593050405000)
 (flink,200,1593050407000)
 (flink,300,1593050410000)
 </pre>
-&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x4F7F;&#x7528;<code>TumblingEventTimeWindows</code>&#x65F6;&#x9700;&#x8981;&#x6307;&#x5B9A;event time&#x65F6;&#x95F4;&#x8BED;&#x4E49;&#x4EE5;&#x53CA;&#x8BBE;&#x5B9A;watermark&#x3002;</p>
-<p><strong>Sliding window</strong></p>
-<pre><code class="lang-scala"><span class="hljs-keyword">package</span> com.littlely.windowops
+&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x4F7F;&#x7528;`TumblingEventTimeWindows`&#x65F6;&#x9700;&#x8981;&#x6307;&#x5B9A;event time&#x65F6;&#x95F4;&#x8BED;&#x4E49;&#x4EE5;&#x53CA;&#x8BBE;&#x5B9A;watermark&#x3002;
 
-<span class="hljs-keyword">import</span> org.apache.flink.api.scala._
-<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.<span class="hljs-type">TimeCharacteristic</span>
-<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.scala.<span class="hljs-type">StreamExecutionEnvironment</span>
-<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.assigners.{<span class="hljs-type">SlidingEventTimeWindows</span>, <span class="hljs-type">TumblingEventTimeWindows</span>}
-<span class="hljs-keyword">import</span> org.apache.flink.streaming.api.windowing.time.<span class="hljs-type">Time</span>
+**Sliding window**
 
-<span class="hljs-comment">/**
+```scala
+package com.littlely.windowops
+
+import org.apache.flink.api.scala._
+import org.apache.flink.streaming.api.TimeCharacteristic
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
+import org.apache.flink.streaming.api.windowing.assigners.{SlidingEventTimeWindows, TumblingEventTimeWindows}
+import org.apache.flink.streaming.api.windowing.time.Time
+
+/**
  * spark,20,1593050400000
  * spark,30,1593050401000
  * flink,20,1593050404000
@@ -599,28 +602,30 @@
  * flink,300,1593050410000
  *
  * flink,10,1593050415000
- */</span>
-<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">SlidingWindows</span> </span>{
-  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
-    <span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
-    env.setParallelism(<span class="hljs-number">1</span>)
-    env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
+ */
+object SlidingWindows {
+  def main(args: Array[String]): Unit = {
+    val env = StreamExecutionEnvironment.getExecutionEnvironment
+    env.setParallelism(1)
+    env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
 
-    <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
-    text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
-      .map(p =&gt; <span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+    val text = env.socketTextStream(&quot;localhost&quot;, 9999)
+    text.map(_.toLowerCase.split(&quot;,&quot;)).filter(_.nonEmpty)
+      .map(p =&gt; Tuple3[String, Int, Long](p(0), p(1).toInt, p(2).toLong))
       .assignAscendingTimestamps(_._3)
-      .keyBy(<span class="hljs-number">0</span>)
-      .window(<span class="hljs-type">SlidingEventTimeWindows</span>.of(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">10</span>), <span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>)))  <span class="hljs-comment">// &#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x4E3A;10s&#xFF0C;&#x6B65;&#x957F;5s</span>
-      .sum(<span class="hljs-number">1</span>)
+      .keyBy(0)
+      .window(SlidingEventTimeWindows.of(Time.seconds(10), Time.seconds(5)))  // &#x6ED1;&#x52A8;&#x7A97;&#x53E3;&#xFF0C;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x4E3A;10s&#xFF0C;&#x6B65;&#x957F;5s
+      .sum(1)
       .print()
 
     env.execute()
   }
 }
-</code></pre>
-<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
-<p><pre>
+```
+
+&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;
+
+<pre>
 (spark,50,1593050400000)
 (flink,20,1593050404000)
 (spark,190,1593050400000)
@@ -628,12 +633,206 @@
 (flink,500,1593050407000)
 (spark,140,1593050405000)
 </pre>
-&#x53EF;&#x4EE5;&#x4E00;&#x6761;&#x4E00;&#x6761;&#x5730;&#x8F93;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;&#x662F;&#x600E;&#x4E48;&#x53D8;&#x5316;&#x7684;&#x3002;</p>
-<p><strong>&#x81EA;&#x5B9A;&#x4E49;window assigner</strong></p>
-<p>&#x4E00;&#x822C;&#x524D;&#x4E24;&#x79CD;window assigner&#x5C31;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5728;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x81EA;&#x5DF1;&#x9700;&#x8981;&#x7684;&#x7A97;&#x53E3;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x548C;&#x5B83;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x6709;&#x4E9B;&#x5DEE;&#x522B;&#xFF0C;&#x8FD9;&#x4E9B;&#x5728;&#x8BB2;&#x89E3;trigger&#x7684;&#x65F6;&#x5019;&#x518D;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#x3002;</p>
-<h3 id="245-window&#x805A;&#x5408;&#x51FD;&#x6570;">2.4.5 window&#x805A;&#x5408;&#x51FD;&#x6570;</h3>
-<p>&#x5728;&#x7A97;&#x53E3;&#x901A;&#x8FC7;&#x9ED8;&#x8BA4;&#x7684;trigger(&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;trigger&#xFF0C;&#x540E;&#x9762;&#x8BB2;)&#x53D1;&#x5C04;&#x6570;&#x636E;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BF9;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x7A97;&#x53E3;&#x7684;&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x805A;&#x5408;&#x51FD;&#x6570;&#x6709;&#x591A;&#x79CD;&#xFF0C;&#x4F8B;&#x5982;ReduceFunction&#xFF0C;AggregateFunction&#xFF0C;FoldFunction&#xFF0C;ProcessWindowFunction&#x7B49;&#x3002;&#x5176;&#x4E2D;ReduceFunction&#x548C;AggregateFunction&#x6548;&#x7387;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x589E;&#x91CF;&#x805A;&#x5408;&#xFF0C;ProcessWindowFunction&#x6027;&#x80FD;&#x6BD4;&#x8F83;&#x4F4E;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8981;&#x8FED;&#x4EE3;&#x7A97;&#x53E3;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x4F18;&#x70B9;&#x5C31;&#x662F;&#x80FD;&#x591F;&#x5BF9;&#x7A97;&#x53E3;&#x8FDB;&#x884C;&#x989D;&#x5916;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+&#x53EF;&#x4EE5;&#x4E00;&#x6761;&#x4E00;&#x6761;&#x5730;&#x8F93;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x770B;&#x770B;&#x7ED3;&#x679C;&#x662F;&#x600E;&#x4E48;&#x53D8;&#x5316;&#x7684;&#x3002;
 
+**&#x81EA;&#x5B9A;&#x4E49;window assigner**
+
+&#x4E00;&#x822C;&#x524D;&#x4E24;&#x79CD;window assigner&#x5C31;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x5728;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x81EA;&#x5DF1;&#x9700;&#x8981;&#x7684;&#x7A97;&#x53E3;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x548C;&#x5B83;&#x4EEC;&#x5B9A;&#x4E49;&#x7684;&#x89E6;&#x53D1;&#x65B9;&#x5F0F;&#x6709;&#x4E9B;&#x5DEE;&#x522B;&#xFF0C;&#x8FD9;&#x4E9B;&#x5728;&#x8BB2;&#x89E3;trigger&#x7684;&#x65F6;&#x5019;&#x518D;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#x3002;
+
+
+
+### 2.4.5 window&#x805A;&#x5408;&#x51FD;&#x6570;
+
+&#x5728;&#x7A97;&#x53E3;&#x901A;&#x8FC7;&#x9ED8;&#x8BA4;&#x7684;trigger(&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;trigger&#xFF0C;&#x540E;&#x9762;&#x8BB2;)&#x53D1;&#x5C04;&#x6570;&#x636E;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BF9;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x7A97;&#x53E3;&#x7684;&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x805A;&#x5408;&#x51FD;&#x6570;&#x6709;&#x591A;&#x79CD;&#xFF0C;&#x4F8B;&#x5982;ReduceFunction&#xFF0C;AggregateFunction&#xFF0C;FoldFunction&#xFF0C;ProcessWindowFunction&#x7B49;&#x3002;&#x5176;&#x4E2D;ReduceFunction&#x548C;AggregateFunction&#x6548;&#x7387;&#x6BD4;&#x8F83;&#x9AD8;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x589E;&#x91CF;&#x805A;&#x5408;&#xFF0C;ProcessWindowFunction&#x6027;&#x80FD;&#x6BD4;&#x8F83;&#x4F4E;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8981;&#x8FED;&#x4EE3;&#x7A97;&#x53E3;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x4F18;&#x70B9;&#x5C31;&#x662F;&#x80FD;&#x591F;&#x5BF9;&#x7A97;&#x53E3;&#x8FDB;&#x884C;&#x989D;&#x5916;&#x7684;&#x64CD;&#x4F5C;&#x3002;
+
+**ReduceFunction**
+
+&#x5148;&#x770B;&#x4E00;&#x4E0B;`reduce`&#x51FD;&#x6570;&#x7684;&#x7B7E;&#x540D;&#xFF1A;`def reduce(function: (T, T) =&gt; T): DataStream[T]`&#xFF0C;`reduce`&#x51FD;&#x6570;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8F93;&#x5165;&#x4E24;&#x4E2A;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x8F93;&#x51FA;&#x4E5F;&#x662F;&#x76F8;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4F8B;&#x5B50;&#xFF1A;
+
+```scala
+package com.littlely.windowfuncs
+
+import org.apache.flink.api.scala._
+import org.apache.flink.streaming.api.TimeCharacteristic
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows
+import org.apache.flink.streaming.api.windowing.time.Time
+
+/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */
+object ReduceFunc {
+  def main(args: Array[String]): Unit = {
+    val env = StreamExecutionEnvironment.getExecutionEnvironment
+    env.setParallelism(1)
+    env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
+
+    val text = env.socketTextStream(&quot;localhost&quot;, 9999)
+    text.map(_.toLowerCase.split(&quot;,&quot;)).filter(_.nonEmpty)
+      .map(p =&gt; Tuple3[String, Int, Long](p(0), p(1).toInt, p(2).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(0)
+      .window(TumblingEventTimeWindows.of(Time.seconds(10)))
+      .reduce((v1, v2) =&gt; (v1._1, v1._2 + v2._2, v2._3))
+      .print()
+
+    env.execute()
+  }
+}
+```
+
+**AggregateFunction**
+
+AggregateFunction&#x662F;ReduceFunction&#x7684;&#x4E00;&#x4E2A;&#x6CDB;&#x5316;&#x7248;&#x672C;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x7740;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x65E2;&#x8F93;&#x5165;&#x7C7B;&#x578B;&#xFF0C;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x7C7B;&#x578B;&#x548C;&#x8F93;&#x51FA;&#x7C7B;&#x578B;&#xFF0C;&#x67E5;&#x770B;`aggregate`&#x7B7E;&#x540D;`def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation]`&#x770B;&#x5230;`ACC`&#x4E3A;&#x8F93;&#x5165;&#x7C7B;&#x578B;&#xFF0C;`V`&#x4E3A;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x7C7B;&#x578B;&#xFF0C;`R`&#x4E3A;&#x8F93;&#x51FA;&#x7C7B;&#x578B;&#x3002;
+
+```scala
+package com.littlely.windowfuncs
+
+import org.apache.flink.api.common.functions.AggregateFunction
+import org.apache.flink.api.scala._
+import org.apache.flink.streaming.api.TimeCharacteristic
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows
+import org.apache.flink.streaming.api.windowing.time.Time
+
+
+/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */
+object AggregateFunc {
+  def main(args: Array[String]): Unit = {
+    val env = StreamExecutionEnvironment.getExecutionEnvironment
+    env.setParallelism(1)
+    env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
+
+    val text = env.socketTextStream(&quot;localhost&quot;, 9999)
+    text.map(_.toLowerCase.split(&quot;,&quot;)).filter(_.nonEmpty)
+      .map(p =&gt; Tuple3[String, Int, Long](p(0), p(1).toInt, p(2).toLong))
+      .assignAscendingTimestamps(_._3)
+      .keyBy(0)
+      .window(TumblingEventTimeWindows.of(Time.seconds(10)))
+      .aggregate(new MyAggregateFunc)
+      .print()
+
+    env.execute()
+  }
+}
+
+// &#x6C42;&#x5E73;&#x5747;&#x503C;
+class MyAggregateFunc extends AggregateFunction[(String, Int, Long), (Int, Int), Double]{
+  // &#x6784;&#x5EFA;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x503C;
+  override def createAccumulator(): (Int, Int) = {
+    (0, 0)
+  }
+
+  // &#x8F93;&#x5165;&#x503C;&#x4E0E;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x503C;&#x76F8;&#x52A0;
+  override def add(value: (String, Int, Long), accumulator: (Int, Int)): (Int, Int) = {
+    (value._2 + accumulator._1, accumulator._2 + 1)
+  }
+
+  // &#x83B7;&#x53D6;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;
+  override def getResult(accumulator: (Int, Int)): Double = {
+    accumulator._1 / accumulator._2
+  }
+
+  // &#x4E24;&#x4E2A;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x7684;&#x878D;&#x5408;
+  override def merge(a: (Int, Int), b: (Int, Int)): (Int, Int) = {
+    (a._1 + b._1, a._2 + b._2)
+  }
+}
+```
+
+**ProcessWindowFunction**
+
+ProcessWindowFunction&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5305;&#x542B;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x4E0D;&#x4EC5;&#x5982;&#x6B64;&#xFF0C;&#x4ED6;&#x8FD8;&#x80FD;&#x901A;&#x8FC7;`Context`&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;watermark&#x4EE5;&#x53CA;&#x7A97;&#x53E3;&#x4FE1;&#x606F;&#x7B49;&#xFF0C;&#x53EF;&#x4EE5;&#x8BF4;&#x5B83;&#x662F;&#x6700;&#x7075;&#x6D3B;&#x7684;&#x7A97;&#x53E3;&#x805A;&#x5408;&#x51FD;&#x6570;&#xFF0C;&#x4E0D;&#x8FC7;&#x5B83;&#x7684;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#x5C31;&#x662F;&#x9700;&#x8981;&#x7F13;&#x5B58;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;OOM&#x3002;
+
+```scala
+package com.littlely.windowfuncs
+
+import org.apache.flink.api.java.functions.KeySelector
+import org.apache.flink.api.scala._
+import org.apache.flink.streaming.api.TimeCharacteristic
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
+import org.apache.flink.streaming.api.scala.function.ProcessWindowFunction
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows
+import org.apache.flink.streaming.api.windowing.time.Time
+import org.apache.flink.streaming.api.windowing.windows.TimeWindow
+import org.apache.flink.util.Collector
+
+/**
+ * spark,20,1593050400000
+ * spark,30,1593050401000
+ * flink,20,1593050404000
+ * spark,40,1593050405000
+ *
+ * spark,100,1593050406000
+ * flink,200,1593050407000
+ * flink,300,1593050410000
+ *
+ * flink,10,1593050415000
+ */
+object ProcessFunc {
+  def main(args: Array[String]): Unit = {
+    val env = StreamExecutionEnvironment.getExecutionEnvironment
+    env.setParallelism(1)
+    env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
+
+    val text = env.socketTextStream(&quot;localhost&quot;, 9999)
+    text.map(_.toLowerCase.split(&quot;,&quot;)).filter(_.nonEmpty)
+      .map(p =&gt; Tuple3[String, Int, Long](p(0), p(1).toInt, p(2).toLong))
+      .assignAscendingTimestamps(_._3)
+      // &#x8FD9;&#x91CC;&#x6CE8;&#x610F;&#xFF0C;&#x56E0;&#x4E3A;process&#x53C2;&#x6570;key&#x662F;&#x7531;keyBy&#x51FD;&#x6570;&#x4E2D;&#x7684;KeySelector&#x9009;&#x53D6;&#x7684;&#xFF0C;
+      // &#x5982;&#x679C;&#x4F7F;&#x7528;tuple&#x7684;&#x4E0B;&#x6807;&#x9009;&#x53D6;&#x5143;&#x7D20;&#x8FDB;&#x884C;keyBy&#x65F6;&#x4E0D;&#x80FD;&#x8BC6;&#x522B;&#x7C7B;&#x578B;&#xFF0C;&#x4F1A;&#x7F16;&#x8BD1;&#x51FA;&#x9519;&#xFF0C;&#x6240;&#x4EE5;&#x53EA;&#x80FD;&#x7528;KeySelector
+      .keyBy(new KeySelector[(String, Int, Long), String] {
+        override def getKey(value: (String, Int, Long)): String = value._1
+      })
+      .window(TumblingEventTimeWindows.of(Time.seconds(10)))
+      .process(new MyProcessFunction)
+      .print()
+
+    env.execute()
+  }
+}
+
+class MyProcessFunction extends ProcessWindowFunction[(String, Int, Long), (String, Int), String, TimeWindow]{
+  override def process(key: String, context: Context, elements: Iterable[(String, Int, Long)], out: Collector[(String, Int)]): Unit = {
+    var count: Int = 0
+    for (i <- elements){="" count="count" +="" i._2="" }="" out.collect((key,="" count))="" ```="" 至此，窗口的所有必要操作都讲完了，下面就开始讲一些可选的操作。="" ###="" 2.4.6="" triggers="" trigger就是触发的意思，在flink中，trigger决定了窗口在什么时候进行触发运行。每个wndowassigner都有一个默认的trigger，当然可以自定义trigger。内部已实现的trigger包括`eventtimetrigger`，="" `processtimetrigger`以及`counttrigger`等。="" 回顾2.4.3节的乱序模式，在使用eventtime语义编写window函数时它默认调用`eventtimetrigger`，查看`eventtimetrigger`源码定义的`onelement`和`oneventtime`可以用下表描述触发过程：="" **源码：**="" ```scala="" @override="" public="" triggerresult="" onelement(object="" element,="" long="" timestamp,="" timewindow="" window,="" triggercontext="" ctx)="" throws="" exception="" {="" if="" (window.maxtimestamp()="" <="ctx.getCurrentWatermark())" the="" watermark="" is="" already="" past="" window="" fire="" immediately="" return="" triggerresult.fire;="" else="" ctx.registereventtimetimer(window.maxtimestamp());="" triggerresult.continue;="" oneventtime(long="" time,="" time="=" window.maxtimestamp()="" ?="" triggerresult.fire="" :="" **数据：**="" <pre="">
+spark,20,1593050400000
+spark,30,1593050401000
+flink,10,1593050402000
+flink,20,1593050402000
+spark,40,1593050405000
+spark,100,1593050406000
+spark,10,1593050403000
+flink,200,1593050407000
+flink,300,1593050410000
+hadoop,20,1593050411000
+hadoop,20,1593050412000
+
+
+<p><strong>&#x89E6;&#x53D1;&#x8FC7;&#x7A0B;&#xFF1A;</strong></p>
+<p><img src="../pics/pic_2/trigger.png" alt="trigger"></p>
+<p>&#x5BF9;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x7684;trigger&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;<code>Trigger</code>&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#xFF0C;&#x6839;&#x636E;&#x9700;&#x6C42;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x5229;&#x7528;watermark&#x5904;&#x7406;&#x4E71;&#x5E8F;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x7684;<code>EventTimeTrigger</code>&#x7C7B;&#x3002;</p>
+</->
                                 
                                 </section>
                             
@@ -672,7 +871,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.4 Data Transformation","level":"1.3.4","depth":2,"previous":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"path":"chapters/chapter2_3.md","ref":"chapters/chapter2_3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4.md","mtime":"2020-07-04T04:02:22.503Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-04T04:02:45.798Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.4 Data Transformation","level":"1.3.4","depth":2,"previous":{"title":"2.3 Data Sinks","level":"1.3.3","depth":2,"path":"chapters/chapter2_3.md","ref":"chapters/chapter2_3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4.md","mtime":"2020-07-05T08:21:31.710Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-05T08:21:58.528Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
