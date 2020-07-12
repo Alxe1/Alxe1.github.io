@@ -408,8 +408,9 @@
  *
  * spark,40,1593050405000
  * spark,100,1593050406000
- * spark,10,1593050403000
+ * spark,10,1593050390000
  * flink,200,1593050407000
+ * spark,10,1593050310000
  */</span>
 <span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">ProcessLateData</span> </span>{
   <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
@@ -417,22 +418,24 @@
     env.setParallelism(<span class="hljs-number">1</span>)
     env.setStreamTimeCharacteristic(<span class="hljs-type">TimeCharacteristic</span>.<span class="hljs-type">EventTime</span>)
 
-    <span class="hljs-keyword">val</span> lateOutputTag = <span class="hljs-keyword">new</span> <span class="hljs-type">OutputTag</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)](<span class="hljs-string">&quot;late-data&quot;</span>)  <span class="hljs-comment">// &#x4FA7;&#x8F93;&#x51FA;&#x6D41;&#x6807;&#x5FD7;</span>
+    <span class="hljs-keyword">val</span> lateOutputTag: <span class="hljs-type">OutputTag</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)] = <span class="hljs-keyword">new</span> <span class="hljs-type">OutputTag</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)](<span class="hljs-string">&quot;late-data&quot;</span>)
 
     <span class="hljs-keyword">val</span> text = env.socketTextStream(<span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-number">9999</span>)
     <span class="hljs-keyword">val</span> res = text.map(_.toLowerCase.split(<span class="hljs-string">&quot;,&quot;</span>)).filter(_.nonEmpty)
-      .map(p=&gt;<span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
+      .map(p =&gt; <span class="hljs-type">Tuple3</span>[<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>](p(<span class="hljs-number">0</span>), p(<span class="hljs-number">1</span>).toInt, p(<span class="hljs-number">2</span>).toLong))
       .assignTimestampsAndWatermarks(<span class="hljs-keyword">new</span> <span class="hljs-type">MyWatermarkAssigner</span>)
       .keyBy(<span class="hljs-number">0</span>)
       .timeWindow(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">5</span>))
-      .allowedLateness(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">3</span>))  <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x6700;&#x5927;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;</span>
+      .allowedLateness(<span class="hljs-type">Time</span>.seconds(<span class="hljs-number">3</span>))
+      .sideOutputLateData(lateOutputTag)
       .sum(<span class="hljs-number">1</span>)
 
     res.print()
-    res.getSideOutput(lateOutputTag)  <span class="hljs-comment">// &#x4FA7;&#x6D41;&#x8F93;&#x51FA;</span>
+    res.getSideOutput(lateOutputTag).map(_.toString() + <span class="hljs-string">&quot; is late&quot;</span>).print()
 
     env.execute()
   }
+
 }
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyWatermarkAssigner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BoundedOutOfOrdernessTimestampExtractor</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Int</span>, <span class="hljs-type">Long</span>)](<span class="hljs-params"><span class="hljs-type">Time</span>.seconds(2</span>))</span>{
@@ -443,8 +446,10 @@
 </code></pre>
 <p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
 <pre>
-(spark,60,1593050400000)
+(spark,10,1593050390000) is late
+(spark,50,1593050400000)
 (flink,10,1593050402000)
+(spark,10,1593050310000) is late
 </pre>
 
 <p>&#x53EF;&#x4EE5;&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;&#x5728;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x5EF6;&#x8FDF;&#x6570;&#x636E;&#x5904;&#x7406;&#x65F6;&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x3002;&#x53E6;&#x5916;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5728;&#x5BFC;&#x5165;<code>OutputTag</code>&#x7C7B;&#x65F6;&#x522B;&#x5BFC;&#x5165;&#x51FA;&#x9519;&#x3002;</p>
@@ -487,7 +492,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.4.8 延迟数据处理(Allow lateness)","level":"1.5.2.8","depth":3,"previous":{"title":"2.4.7 Evictor","level":"1.5.2.7","depth":3,"path":"chapters/chapter2_4_7.md","ref":"chapters/chapter2_4_7.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4_8.md","mtime":"2020-07-12T04:15:31.464Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-12T04:16:48.318Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.4.8 延迟数据处理(Allow lateness)","level":"1.5.2.8","depth":3,"previous":{"title":"2.4.7 Evictor","level":"1.5.2.7","depth":3,"path":"chapters/chapter2_4_7.md","ref":"chapters/chapter2_4_7.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapters/chapter2_4_8.md","mtime":"2020-07-12T05:01:37.003Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-12T05:02:12.751Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
